@@ -10,9 +10,9 @@ use App\Models\Comment;
 class AdminCommentsController extends Controller
 {
     private  $rules = [
-                'post_id' => 'required|numeric',
-                'the_comment' => 'required|min:3|max:1000',
-            ];
+        'post_id' => 'required|numeric',
+        'the_comment' => 'required|min:3|max:1000',
+    ];
 
     public function index()
     {
@@ -21,22 +21,18 @@ class AdminCommentsController extends Controller
         ]);
     }
 
-
     public function create()
-    {
+    { 
+        // pluck lấy toàn bộ cam tham số truyền vào như title, id
         return view('admin_dashboard.comments.create',[
             'posts' => Post::pluck('title', 'id'),
         ]);
     }
 
-
- 
     public function store(Request $request)
     {
-
         $validated = $request->validate($this->rules);
         $validated['user_id'] = auth()->id();
-
         Comment::create($validated);
         return redirect()->route('admin.comments.create')->with('success', 'Thêm bình luận mới thành công.');
     }
@@ -50,15 +46,12 @@ class AdminCommentsController extends Controller
         ]);
     }
 
-
     public function update(Request $request, Comment $comment)
     {
         $validated = $request->validate($this->rules);
- 
         $comment->update($validated);
         return redirect()->route('admin.comments.edit',$comment)->with('success', 'Sửa bình luận mới thành công.');
     }
-
 
     public function destroy(Comment $comment)
     {

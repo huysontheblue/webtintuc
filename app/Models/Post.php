@@ -18,6 +18,7 @@ class Post extends Model
     protected $fillable = ['title','slug', 'excerpt', 'body', 'user_id','category_id', 'approved'];
     
     public function author() {
+        //Bộ lọc bổ sung belongsTo
         return $this->belongsTo(User::class, 'user_id');
     } 
 
@@ -30,6 +31,7 @@ class Post extends Model
     }
     
     public function comments() {
+        //Bộ lọc bổ sung hasMany
         return $this->hasMany(Comment::class);
     }
 

@@ -1,14 +1,12 @@
 <?php
-
-function checkPermission($name) {    
-    $route_arr = auth()->user()->role->permissions;
-    $route = $route_arr->where('name', $name)->count();
-    if($route == 1){
-        return true;
+    function checkPermission($name) {    
+        $route_arr = auth()->user()->role->permissions;
+        $route = $route_arr->where('name', $name)->count();
+        if($route == 1){
+            return true;
+        }
+        return false;
     }
-    return false;
-}
-
 ?>
 <!--sidebar wrapper -->
 <div class="sidebar-wrapper" data-simplebar="true">
@@ -29,7 +27,7 @@ function checkPermission($name) {
             <li>
                 <a href="{{ route('admin.index') }}" >
                     <div class="parent-icon">
-                        <i class='bx bx-home-circle'></i>
+                        <i class='bx bx-home' ></i>
                     </div>
                     <div class="menu-title">
                         Bảng điều khiển
@@ -72,7 +70,7 @@ function checkPermission($name) {
             <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon">
-                        <i class='bx bx-menu'></i>
+                        <i class='bx bx-category'></i>
                     </div>
                     <div class="menu-title">Danh mục bài viết</div>
                 </a>
@@ -201,12 +199,23 @@ function checkPermission($name) {
                 </a>
             </li>
         @endif
+
+        @if(checkPermission("admin.dangky"))
+            <li>
+                <a href="{{ route('admin.dangky') }}" >
+                    <div class="parent-icon">
+                        <i class='bx bx-mail-send'></i>
+                    </div>
+                    <div class="menu-title">Đăng ký</div>
+                </a>
+            </li>
+        @endif
                 
         @if(checkPermission("admin.setting.edit"))
             <li>
                 <a href="{{ route('admin.setting.edit') }}" >
                     <div class="parent-icon">
-                        <i class='bx bx-info-square'></i>
+                        <i class='bx bx-cog'></i>
                     </div>
                     <div class="menu-title">Cài đặt</div>
                 </a>

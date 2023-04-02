@@ -63,13 +63,14 @@
 				<div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
 					<div class="sticky-content-inner">
 						<!-- Widget Start -->
-						<x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
+						<x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
+						<!-- blog.side-outstanding_posts -->
 						<!-- Widget End -->
 						<!-- Widget Start -->
-						<x-blog.side-vote />
+						<x-blog.binhchon />
 						<!-- Widget End -->
 						<!-- Widget Start -->
-						<x-blog.side-ad_banner />
+						<x-blog.quangcao />
 						<!-- Widget End -->
 					</div>
 				</div>

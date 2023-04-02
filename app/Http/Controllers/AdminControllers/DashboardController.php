@@ -23,6 +23,9 @@ class DashboardController extends Controller
         $role_user = Role::where('name','user')->first();
         $countUser = User::all()->where('role_id', $role_user->id)->count();
 
+        $role_editor = Role::where('name','editor')->first();
+        $countEditor = User::all()->where('role_id', $role_editor->id)->count();
+
         $postAll = Post::all();
 
         $countView = 0;
@@ -32,7 +35,6 @@ class DashboardController extends Controller
             $countComments =  $countComments + $post->comments()->count();
         }
 
-
         return view('admin_dashboard.index',[
             'countPost' => $countPost,
             'countCategories' => $countCategories,
@@ -40,6 +42,7 @@ class DashboardController extends Controller
             'countUser' => $countUser,
             'countView' => $countView,
             'countComments' => $countComments,
+            'countEditor' => $countEditor,
         ]);
     }
 

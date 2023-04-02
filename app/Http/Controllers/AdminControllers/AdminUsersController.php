@@ -23,10 +23,9 @@ class AdminUsersController extends Controller
     public function index()
     {
         return view('admin_dashboard.users.index', [
-            'users' => User::with('role')->paginate(20),
+            'users' => User::with('role')->paginate(12),
         ]);
     }
-
   
     public function create()
     {
@@ -34,7 +33,6 @@ class AdminUsersController extends Controller
             'roles' => Role::pluck('name','id'),
         ]);
     }
-
 
     public function store(Request $request)
     {
@@ -47,19 +45,16 @@ class AdminUsersController extends Controller
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $file_extension = $image->getClientOriginalExtension();
-            $path   = $image->store('images', 'public');
-            
+            $path   = $image->store('images', 'public');         
             $user->image()->create([
                 'name' => $filename,
                 'extension' => $file_extension,
                 'path' => $path
             ]);
-        }
-        
+        }    
         return redirect()->route('admin.users.create')->with('success', 'Thêm tài khoản thành công.');
     }
 
- 
     public function edit(User $user)
     {
         return view('admin_dashboard.users.edit', [
@@ -79,33 +74,26 @@ class AdminUsersController extends Controller
     {
         $this->rules['password'] = 'nullable|min:3|max:20';
         $this->rules['email'] = ['required','email', Rule::unique('users')->ignore($user)];
-
         $validated = $request->validate($this->rules);
-
         if($validated['password'] === null )
             unset($validated['password']);
         else
             $validated['password'] = Hash::make($request->input('password'));
-
-        $user->update($validated);
-
+            $user->update($validated);
         if($request->has('image'))
         {
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $file_extension = $image->getClientOriginalExtension();
-            $path   = $image->store('images', 'public');
-            
+            $path   = $image->store('images', 'public');         
             $user->image()->create([
                 'name' => $filename,
                 'extension' => $file_extension,
                 'path' => $path
             ]);
-        }
-        
+        }       
         return redirect()->route('admin.users.edit', $user)->with('success', 'Sửa tài khoản thành công.');
     }
-
 
     public function destroy(User $user)
     {

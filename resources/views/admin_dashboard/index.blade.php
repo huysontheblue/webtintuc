@@ -72,6 +72,21 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
+                                    <p class="mb-0 text-secondary">Tổng người Editor</p>
+                                    <h4 class="my-1 text-warning">{{ $countEditor }}</h4>
+                                </div>
+                                <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto">
+                                    <i class='bx bxs-group'></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card radius-10 border-start border-0 border-3 border-warning">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div>
                                     <p class="mb-0 text-secondary">Tổng lượt xem</p>
                                     <h4 class="my-1 text-warning">{{ $countView }}</h4>
                                 </div>

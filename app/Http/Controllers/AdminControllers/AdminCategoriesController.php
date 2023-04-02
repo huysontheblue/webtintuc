@@ -16,8 +16,9 @@ class AdminCategoriesController extends Controller
 
     public function index()
     {
+        //paginate phân trang
         return view('admin_dashboard.categories.index', [
-            'categories' => Category::with('user')->orderBy('id','DESC')->paginate(10)
+            'categories' => Category::with('user')->orderBy('id','ASC')->paginate(10)
         ]);
     }
 
@@ -33,7 +34,6 @@ class AdminCategoriesController extends Controller
         $validated = $request->validate($this->rules);
         $validated['user_id'] = auth()->id();
         Category::create($validated);
-
         return redirect()->route('admin.categories.create')->with('success','Thêm danh mục bài viết thành công.');
     }
 
@@ -58,9 +58,7 @@ class AdminCategoriesController extends Controller
     {
         $this->rules['slug'] = ['required', Rule::unique('categories')->ignore($category)];
         $validated = $request->validate($this->rules);
-
         $category->update($validated);
-
         return redirect()->route('admin.categories.edit', $category)->with('success','Sửa danh mục bài viết thành công.');
     }
 
@@ -68,12 +66,9 @@ class AdminCategoriesController extends Controller
     public function destroy(Category $category)
     {
         $default_category_id = Category::where('name', 'Chưa phân loại')->first()->id;
-
         if($category->name === 'Chưa phân loại')
             abort(404);
-
         $category->posts()->update(['category_id'=> $default_category_id]);
-
         $category->delete();
         return redirect()->route('admin.categories.index')->with('success','Xóa danh mục bài viết thành công.');
     }

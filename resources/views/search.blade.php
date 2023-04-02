@@ -98,15 +98,15 @@
                         <div class="sticky-content-inner">
                         
                             <!-- Widget Start -->
-                            <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
+                            <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <x-blog.side-vote />
+                            <x-blog.binhchon />
                             <!-- Widget End -->
 
                             <!-- Widget Start -->
-                            <x-blog.side-ad_banner />
+                            <x-blog.quangcao />
                             <!-- Widget End -->
 
                         </div>

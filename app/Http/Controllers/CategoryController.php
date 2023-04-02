@@ -45,21 +45,21 @@ class CategoryController extends Controller
         $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
 
-         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
-         $category_unclassified = Category::where('name','Chưa phân loại')->first();
-         $posts_new[0]= Post::latest()->approved()
+        /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+        $category_unclassified = Category::where('name','Chưa phân loại')->first();
+        $posts_new[0]= Post::latest()->approved()
           ->where('category_id','!=', $category_unclassified->id )
           ->take(1)->get();
-         $posts_new[1] = Post::latest()->approved()
+        $posts_new[1] = Post::latest()->approved()
           ->where('category_id','!=', $category_unclassified->id )
           ->where('category_id','!=', $posts_new[0][0]->category->id )
           ->take(1)->get();
-         $posts_new[2] = Post::latest()->approved()
+        $posts_new[2] = Post::latest()->approved()
           ->where('category_id','!=', $category_unclassified->id )
           ->where('category_id','!=', $posts_new[0][0]->category->id )
           ->where('category_id','!=', $posts_new[1][0]->category->id )
           ->take(1)->get();
-         $posts_new[3] = Post::latest()->approved()
+        $posts_new[3] = Post::latest()->approved()
           ->where('category_id','!=', $category_unclassified->id )
           ->where('category_id','!=', $posts_new[0][0]->category->id )
           ->where('category_id','!=', $posts_new[1][0]->category->id)

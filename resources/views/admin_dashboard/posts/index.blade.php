@@ -40,7 +40,7 @@
                             <tr>
                                 <th>Mã bài viết</th>
                                 <th>Tên bài viết</th>
-                                <th>Mô tả</th>
+                                <!-- <th>Mô tả</th> -->
                                 <th>Danh mục</th>
                                 <th>Ngày tạo</th>
                                 <th>Trạng thái</th>
@@ -59,7 +59,7 @@
                                     </div>
                                 </td>
                                 <td>{{ $post->title }}</td>                                              
-                                <td>{{ $post->excerpt }}</td>
+                                <!-- <td>{{ $post->excerpt }}</td> -->
                                 <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->created_at->format('d/m/Y') }}</td>
                                 <td>

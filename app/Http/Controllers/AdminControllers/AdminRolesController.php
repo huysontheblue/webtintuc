@@ -31,16 +31,12 @@ class AdminRolesController extends Controller
  
     public function store(Request $request)
     {
-
         $validated = $request->validate($this->rules);
         $permissions = $request->input('permissions');
-
         $role = Role::create($validated);
         $role->permissions()->sync($permissions);
-
         return redirect()->route('admin.roles.create')->with('success','Thêm quyền mới thành công.');
     }
-
 
     public function edit(Role $role)
     {
@@ -50,14 +46,11 @@ class AdminRolesController extends Controller
         ]);
     }
 
-  
     public function update(Request $request,Role $role)
     {
-
         $this->rules['name'] = ['required', Rule::unique('roles')->ignore($role)];
         $validated = $request->validate($this->rules);
         $permissions = $request->input('permissions');
-
         $role->update($validated);
         $role->permissions()->sync($permissions);
         return redirect()->route('admin.roles.edit', $role )->with('success','Cập nhật quyền mới thành công.');

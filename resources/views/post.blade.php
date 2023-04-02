@@ -1,24 +1,24 @@
 @extends('main_layouts.master')
 @section('title', $post->title. ' - News ')
 @section('custom_css')
-	<style>
-		.post--body.post--content{
-			color: black;
-			font-family: "Source Sans Pro", sans-serif;
-			font-size: 18px;
-		}
+<style>
+	.post--body.post--content{
+		color: black;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 18px;
+	}
 
-		.text.capitalize{
-			text-transform: capitalize !important;
-		}
+	.text.capitalize{
+		text-transform: capitalize !important;
+	}
 
-		.author-info,
-		.post-time{
-			margin: 0;
-			font-size: 14px !important;
-			text-align: right;
-		}
-	</style>
+	.author-info,
+	.post-time{
+		margin: 0;
+		font-size: 14px !important;
+		text-align: right;
+	}
+</style>
 @endsection
 @section('content')
 
@@ -37,7 +37,7 @@
 <!-- Main Breadcrumb End -->
 
 <!-- Main Content Section Start -->
-<div class="main-content--section pbottom--30">
+    <div class="main-content--section pbottom--30">
         <div class="container">
             <div class="row">
                 <!-- Main Content Start -->
@@ -242,13 +242,13 @@
                 <div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
                     <div class="sticky-content-inner">                    
                         <!-- Widget Start -->
-                        <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
+                        <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
                         <!-- Widget End -->
                         <!-- Widget Start -->
-                        <x-blog.side-vote />
+                        <x-blog.binhchon />
 	                    <!-- Widget End -->
                         <!-- Widget Start -->
-                        <x-blog.side-ad_banner />
+                        <x-blog.quangcao />
                         <!-- Widget End -->
                     </div>
                 </div>

@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminControllers\AdminRolesController;
 use App\Http\Controllers\AdminControllers\AdminUsersController;
 use App\Http\Controllers\AdminControllers\AdminContactsController;
 use App\Http\Controllers\AdminControllers\AdminSettingController;
+use App\Http\Controllers\AdminControllers\AdminDangkyController;
 
 
 use App\Http\Controllers\HomeController;
@@ -33,11 +34,15 @@ Route::post('/tai-khoan', [HomeController::class, 'update'])->name('update');
 Route::get('/404', [HomeController::class, 'erorr404'])->name('erorrs.404');
 
 Route::post('/tim-kiem', [HomeController::class,'search'])->name('search');
+
+// Tin nóng, xem nhiều nhất, tin mới nhất 
 Route::get('/tin-tuc-moi-nhat', [HomeController::class,'newPost'])->name('newPost');
 Route::get('/tin-nong', [HomeController::class,'hotPost'])->name('hotPost');
 Route::get('/xem-nhieu-nhat', [HomeController::class,'viewPost'])->name('viewPost');
 
+// Tin mới cập nhật
 Route::get('/bai-vet/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
+
 Route::post('/bai-viet/{post:slug}', [PostsController::class, 'addComment'])->name('posts.add_comment');
 Route::post('/binh-luan', [PostsController::class, 'addCommentUser'])->name('posts.addCommentUser');
 
@@ -73,6 +78,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','check_permissions'])
 
     Route::get('contacts',[AdminContactsController::class, 'index'])->name('contacts');
     Route::delete('contacts/{contact}',[AdminContactsController::class, 'destroy'])->name('contacts.destroy');
+
+    Route::get('dangky',[AdminDangkyController::class, 'index'])->name('dangky');
+    Route::delete('dangky/{dangky}',[AdminDangkyController::class, 'destroy'])->name('dangky.destroy');
 
     Route::get('about',[AdminSettingController::class, 'edit'])->name('setting.edit');
     Route::post('about',[AdminSettingController::class, 'update'])->name('setting.update');

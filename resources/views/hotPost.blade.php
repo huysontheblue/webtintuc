@@ -35,13 +35,10 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="post--img">
-                                                                        <a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}"
-                                                                            class="thumb"><img
-                                                                                src="{{ asset($hotPosts_category[$j][$i]->image ? 'storage/' . $hotPosts_category[$j][$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
-                                                                                alt=""></a>
-                                                                        <a href="{{ route('categories.show', $hotPosts_category[$j][$i]->category) }}"
-                                                                            class="cat">{{ $hotPosts_category[$j][$i]->category->name }}</a>
-
+                                                                        <a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}"class="thumb">
+                                                                            <img src="{{ asset($hotPosts_category[$j][$i]->image ? 'storage/' . $hotPosts_category[$j][$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"alt="">
+                                                                        </a>
+                                                                        <a href="{{ route('categories.show', $hotPosts_category[$j][$i]->category) }}"class="cat">{{ $hotPosts_category[$j][$i]->category->name }}</a>
                                                                     </div>
                                                                 </div>
 
@@ -51,21 +48,20 @@
                                                                             <li><span>{{ $hotPosts_category[$j][$i]->author->name }}</a></li>
                                                                             <li><span>{{ $hotPosts_category[$j][$i]->created_at->locale('vi')->diffForHumans() }}</span></li>
                                                                             <li><a href="#"><i class="fa fm fa-eye"></i>{{ $hotPosts_category[$j][$i]->views }}</span></li>
-                                                                            <li><a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($hotPosts_category[$j][$i]->comments) }}</a></li>
+                                                                            <li><a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}">
+                                                                                <i class="fa fm fa-comments"></i>{{ count($hotPosts_category[$j][$i]->comments) }}
+                                                                                </a>
+                                                                            </li>
                                                                         </ul>
-
-
                                                                         <div class="title">
-                                                                            <h2 class="h3" style="color:black"><a
-                                                                                    href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}"
-                                                                                    class="btn-link">{{ $hotPosts_category[$j][$i]->title }}</a></h3>
+                                                                            <h2 class="h3" style="color:black">
+                                                                                <a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}"class="btn-link">{{ $hotPosts_category[$j][$i]->title }}</a>
+                                                                            </h3>
                                                                         </div>
                                                                     </div>
-
                                                                     <div class="post--content">
                                                                         <p>{{ $hotPosts_category[$j][$i]->excerpt }}</p>
                                                                     </div>
-
                                                                     <div class="post--action">
                                                                         <a class="btn btn-link" href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}">Đọc thêm</a>
                                                                     </div>
@@ -101,15 +97,15 @@
                         <div class="sticky-content-inner">
                         
                         <!-- Widget Start -->
-                        <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
+                        <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
                         <!-- Widget End -->
 
                         <!-- Widget Start -->
-                        <x-blog.side-vote />
+                        <x-blog.binhchon />
                         <!-- Widget End -->
 
                         <!-- Widget Start -->
-                        <x-blog.side-ad_banner />
+                        <x-blog.quangcao />
                         <!-- Widget End -->
 
                     </div>

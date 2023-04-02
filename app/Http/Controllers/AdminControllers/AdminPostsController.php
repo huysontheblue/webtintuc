@@ -25,7 +25,7 @@ class AdminPostsController extends Controller
     {
         return view('admin_dashboard.posts.index', [
             // 'posts' => Post::with('category')->get(),
-            'posts' => Post::with('category')->orderBy('id','ASC')->paginate(20),
+            'posts' => Post::with('category')->orderBy('id','ASC')->paginate(12),
         ]);
     }
 
@@ -47,8 +47,7 @@ class AdminPostsController extends Controller
             $thumbnail = $request->file('thumbnail');
             $filename = $thumbnail->getClientOriginalName();
             $file_extension = $thumbnail->getClientOriginalExtension();
-            $path   = $thumbnail->store('images', 'public');
-            
+            $path   = $thumbnail->store('images', 'public');         
             $post->image()->create([
                 'name' => $filename,
                 'extension' => $file_extension,
@@ -64,23 +63,7 @@ class AdminPostsController extends Controller
         }
 
         if (count($tags_ids) > 0)
-            $post->tags()->sync( $tags_ids ); 
-        
-        // $tags = explode(',', $request->input('tags'));
-        // $tags_ids = [];
-        // foreach ($tags as $tag) {
-
-        //     $tag_exits = $post->tags()->where('name', trim($tag))->count();
-        //     if( $tag_exits == 0){
-        //         $tag_ob = Tag::create(['name'=> $tag]);
-        //         $tags_ids[]  = $tag_ob->id;
-        //     }
-            
-        // }
-
-        // if (count($tags_ids) > 0)
-        //     $post->tags()->syncWithoutDetaching( $tags_ids );
-
+            $post->tags()->sync( $tags_ids );       
         return redirect()->route('admin.posts.create')->with('success', 'Thêm bài viết thành công.');
     }
 
@@ -89,15 +72,13 @@ class AdminPostsController extends Controller
         //
     }
 
-
     public function edit(Post $post){
         $tags = '';
         foreach($post->tags as $key => $tag){
             $tags .= $tag->name;
             if($key !== count($post->tags) - 1)
                 $tags .= ', ';
-        }
-        
+        }       
         return view('admin_dashboard.posts.edit',[
             'post' => $post,
             'tags' => $tags,
@@ -130,18 +111,15 @@ class AdminPostsController extends Controller
         $tags = explode(',', $request->input('tags'));
         $tags_ids = [];
         foreach ($tags as $tag) {
-
             $tag_exits = $post->tags()->where('name', trim($tag))->count();
             if( $tag_exits == 0){
                 $tag_ob = Tag::create(['name'=> $tag]);
                 $tags_ids[]  = $tag_ob->id;
-            }
-            
+            }  
         }
 
         if (count($tags_ids) > 0)
             $post->tags()->syncWithoutDetaching( $tags_ids ); 
-
         return redirect()->route('admin.posts.edit', $post)->with('success', 'Sửa viết thành công.');
     }
 
@@ -171,8 +149,4 @@ class AdminPostsController extends Controller
         $data['message'] =  $str;
         return response()->json($data);
     }
-
-    
-
-
 }

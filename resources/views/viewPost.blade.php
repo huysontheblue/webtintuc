@@ -45,7 +45,11 @@
 																	<li><span>{{ $viewPosts_category[$i]->author->name }}</a></li>
 																	<li><span>{{ $viewPosts_category[$i]->created_at->locale('vi')->diffForHumans() }}</span></li>
                                                                     <li><a href="#"><i class="fa fm fa-eye"></i>{{ $viewPosts_category[$i]->views }}</span></li>
-                                                                    <li><a href="{{ route('posts.show', $viewPosts_category[$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($viewPosts_category[$i]->comments) }}</a></li>
+                                                                    <li>
+                                                                        <a href="{{ route('posts.show', $viewPosts_category[$i] ) }}">
+                                                                            <i class="fa fm fa-comments"></i>{{ count($viewPosts_category[$i]->comments) }}
+                                                                        </a>
+                                                                    </li>
                                                                 </ul>
 
                                                                 <div class="title">
@@ -86,20 +90,20 @@
                     <!-- Main Sidebar Start -->
                     <div class="main--sidebar col-md-4 col-sm-5 ptop--30 pbottom--30" data-sticky-content="true">
                         <div class="sticky-content-inner">
-                        
-                        <!-- Widget Start -->
-                        <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
-                        <!-- Widget End -->
+                            
+                            <!-- Widget Start -->
+                            <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
+                            <!-- Widget End -->
 
-                        <!-- Widget Start -->
-                        <x-blog.side-vote />
-                        <!-- Widget End -->
+                            <!-- Widget Start -->
+                            <x-blog.binhchon />
+                            <!-- Widget End -->
 
-                        <!-- Widget Start -->
-                        <x-blog.side-ad_banner />
-                        <!-- Widget End -->
+                            <!-- Widget Start -->
+                            <x-blog.quangcao />
+                            <!-- Widget End -->
 
-                    </div>
+                        </div>
                     </div> <!-- Main Sidebar End -->
                 </div>
             </div>

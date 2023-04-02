@@ -47,20 +47,21 @@
 																	<li><span>{{ $newPosts_category[$i]->author->name }}</a></li>
 																	<li><span>{{ $newPosts_category[$i]->created_at->locale('vi')->diffForHumans() }}</span></li>
                                                                     <li><a href="#"><i class="fa fm fa-eye"></i>{{ $newPosts_category[$i]->views }}</span></li>
-                                                                    <li><a href="{{ route('posts.show', $newPosts_category[$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($newPosts_category[$i]->comments) }}</a></li>
+                                                                    <li>
+                                                                        <a href="{{ route('posts.show', $newPosts_category[$i] ) }}">
+                                                                        <i class="fa fm fa-comments"></i>{{ count($newPosts_category[$i]->comments) }}
+                                                                        </a>
+                                                                    </li>
                                                                 </ul>
-
                                                                 <div class="title">
                                                                     <h2 class="h3" style="color:black">
                                                                         <a href="{{ route('posts.show', $newPosts_category[$i] ) }}" class="btn-link">{{ $newPosts_category[$i]->title }}</a>
                                                                     </h2>
                                                                 </div>
                                                             </div>
-
                                                             <div class="post--content">
                                                                 <p>{{ $newPosts_category[$i]->excerpt }}</p>
                                                             </div>
-
                                                             <div class="post--action">
                                                                 <a class="btn btn-link" href="{{ route('posts.show', $newPosts_category[$i] ) }}">Đọc thêm</a>
                                                             </div>
@@ -96,22 +97,22 @@
                         <div class="sticky-content-inner">
                         
                         <!-- Widget Start -->
-                        <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
+                        <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
                         <!-- Widget End -->
 
                         <!-- Widget Start -->
-                        <x-blog.side-vote />
+                        <x-blog.binhchon />
                         <!-- Widget End -->
 
                         <!-- Widget Start -->
-                        <x-blog.side-ad_banner />
+                        <x-blog.quangcao />
                         <!-- Widget End -->
 
                     </div>
-                    </div> <!-- Main Sidebar End -->
-                </div>
+                </div> <!-- Main Sidebar End -->
             </div>
         </div>
-        <!-- Main Content Section End -->
+    </div>
+     <!-- Main Content Section End -->
 @endsection
 

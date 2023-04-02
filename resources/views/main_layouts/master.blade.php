@@ -115,7 +115,7 @@
 						</li>
 						<li style="text-transform: capitalize">
 							<i class="fa fm fa-calendar"></i>
-							Hôm nay ( {{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}} )
+							Hôm nay ( {{ $now->translatedFormat('l') }},  {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}} )
 						</li>
 					</ul>
 				</div>	
@@ -220,7 +220,7 @@
 				<!-- Header Search Form Start -->
 				<form method="POST" action="{{ route('search') }}" class="header--search-form float--right" data-form="validate">
 					@csrf	
-					<input type="search" name="search" placeholder="Search..." class="header--search-control form-control" required>
+					<input type="search" name="search" placeholder="Tìm kiếm..." class="header--search-control form-control" required>
 					<button type="submit" class="header--search-btn btn">
 						<i class="header--search-icon fa fa-search"></i>
 					</button>
@@ -286,7 +286,7 @@
 						<li><a href="{{ route('home') }}"></i>Trang chủ</a></li>
 						<li><a href="{{ route('about') }}"></i>Giới thiệu</a></li>
 						<li><a href="{{ route('contact.create') }}"></i>Liên hệ</a></li>
-						<li><a href="{{ route('contact.create') }}"></i>Mới nhất</a></li>
+						<li><a href="{{ route('newPost') }} "></i>Mới nhất</a></li>
 					</ul>
 				</div>
 				<div class="col-md-2  colorlib-widget">
