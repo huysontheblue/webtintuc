@@ -20,7 +20,6 @@ class AdminSettingController  extends Controller
     {
         $validated = request()->validate([
             'about_first_text' => 'required|min:50|max:500',
-            'about_second_text' => 'required|min:50|max:500',
             'about_first_image' => 'nullable|image',
             'about_second_image' => 'nullable|image',
         ]);
@@ -38,7 +37,7 @@ class AdminSettingController  extends Controller
             $path   = $about_second_image->store('setting', 'public');
             $validated['about_second_image'] = $path;       
         }
-
+        
         Setting::find(1)->update($validated);
         return redirect()->route('admin.setting.edit')->with('success','Cập nhật thành công trang giới thiệu');
     }

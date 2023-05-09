@@ -3,23 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        
+        <meta name="csrf-token" content="{{ csrf_token() }}">    
         <link rel="icon" type="image/png" href="{{ asset('kcnew/frontend/img/news.jpg') }}"  sizes="160x160">
         <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
         <title>Đăng nhập / Đăng ký</title>
-
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans text-gray-900 antialiased" style="background-color: #e9ccf3">
             {{ $slot }}
         </div>
     </body>

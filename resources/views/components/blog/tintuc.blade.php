@@ -11,19 +11,17 @@ use App\Models\Category;
 ?>
 
 @props(['outstanding_posts'] )
-   <!-- Widget Start -->
+
 <div class="widget">
     <div class="widget--title">
         <h2 class="h4">Tin tức nổi bật</h2>
         <i class="icon fa fa-newspaper-o"></i>
     </div>
-
-    <!-- List Widgets Start -->
     <div class="list--widget list--widget-1">
         <div class="list--widget-nav" data-ajax="tab">
             <ul class="nav nav-justified">
                 <li>
-                    <a class="outstandPosts" href="#" data-ajax-action="load_widget_hot_news">Tin nóng</a>
+                    <a class="outstandPosts" href="#" data-ajax-action="load_widget_hot_news">Tin mới nhất</a>
                 </li>
                 <li class="active">
                     <a class="outstandPosts" href="" data-ajax-action="load_widget_trendy_news">Xu hướng</a>
@@ -33,13 +31,10 @@ use App\Models\Category;
                 </li>
             </ul>
         </div>
-
-        <!-- Post Items Start -->
         <div class="post--items post--items-3" data-ajax-content="outer">
             <ul class="nav listPost" data-ajax-content="inner">
                 @foreach($outstanding_posts as $outstanding_post)
                     <li>
-                        <!-- Post Item Start -->
                         <div class="post--item post--layout-3">
                             <div class="post--img">
                                 <a href="{{ route('posts.show', $outstanding_post) }}" class="thumb">
@@ -60,16 +55,12 @@ use App\Models\Category;
                                 </div>
                             </div>
                         </div>
-                        <!-- Post Item End -->
                     </li>
                 @endforeach
             </ul>
         </div>
-        <!-- Post Items End -->
     </div>
-    <!-- List Widgets End -->
 </div>
-<!-- Widget End -->
 
 @section('custom_js')
 
@@ -78,7 +69,6 @@ use App\Models\Category;
 		$(".global-message").fadeOut();
 	}, 5000)
 </script>
-
 <script>
     const outstandPosts = document.querySelectorAll('.outstandPosts');
     outstandPosts.forEach((item, index)=>{

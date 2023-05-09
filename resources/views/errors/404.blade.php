@@ -28,11 +28,9 @@ $posts_new[3] = Post::latest()->approved()
     ->take(1)->get();
 ?>
 @extends('main_layouts.master')
-
 @section('title','TDQ - Không tìm thấy trang')
 @section('content')
 <div class="wrapper">
-	<!-- Main Content Section Start -->
 	<div class="main-content--section pbottom--30">
 		<div class="container">
             <div class="row">

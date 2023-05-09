@@ -11,26 +11,18 @@
                 </ul>
             </div>
         </div>
-        <!-- Main Breadcrumb End -->
-
-        <!-- Main Content Section Start -->
         <div class="main-content--section pbottom--30">
             <div class="container">
                 <div class="row">
-                    <!-- Main Content Start -->
                     <div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
                         <div class="sticky-content-inner">
                             <div class="row">
-
-                                <!-- Books and Magazine Start -->
                                 <div class="col-md-12 ptop--30 pbottom--30">
-                                    <!-- Post Items Start -->
                                     <div class="post--items post--items-2" data-ajax-content="outer">
                                         <ul class="nav" data-ajax-content="inner">
                                             @for ($i = 0 ; $i < 4 ; $i++ )
                                                 @for ($j = 0 ; $j < 5 ; $j++ )
                                                     <li>
-                                                        <!-- Post Item Start -->
                                                         <div class="post--item">
                                                             <div class="row">
                                                                 <div class="col-md-6">
@@ -49,7 +41,7 @@
                                                                             <li><span>{{ $hotPosts_category[$j][$i]->created_at->locale('vi')->diffForHumans() }}</span></li>
                                                                             <li><a href="#"><i class="fa fm fa-eye"></i>{{ $hotPosts_category[$j][$i]->views }}</span></li>
                                                                             <li><a href="{{ route('posts.show', $hotPosts_category[$j][$i] ) }}">
-                                                                                <i class="fa fm fa-comments"></i>{{ count($hotPosts_category[$j][$i]->comments) }}
+                                                                                    <i class="fa fm fa-comments"></i>{{ count($hotPosts_category[$j][$i]->comments) }}
                                                                                 </a>
                                                                             </li>
                                                                         </ul>
@@ -68,51 +60,27 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-                                                        <!-- Post Item End -->
                                                     </li>
-
                                                     <li>
-                                                        <!-- Divider Start -->
                                                         <hr class="divider">
-                                                        <!-- Divider End -->
                                                     </li>
-											@endfor
+											    @endfor
 											@endfor
                                         </ul>
-
                                     </div>
-                                    <!-- Post Items End -->
-						
                                 </div>
-                                <!-- Books and Magazine End -->
-                                <!-- Photo Gallery Start -->
                             </div>
                         </div>
                     </div>
-                    <!-- Main Content End -->
-
-                    <!-- Main Sidebar Start -->
                     <div class="main--sidebar col-md-4 col-sm-5 ptop--30 pbottom--30" data-sticky-content="true">
-                        <div class="sticky-content-inner">
-                        
-                        <!-- Widget Start -->
+                        <div class="sticky-content-inner">      
                         <x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
-                        <!-- Widget End -->
-
-                        <!-- Widget Start -->
                         <x-blog.binhchon />
-                        <!-- Widget End -->
-
-                        <!-- Widget Start -->
                         <x-blog.quangcao />
-                        <!-- Widget End -->
-
                     </div>
-                    </div> <!-- Main Sidebar End -->
                 </div>
             </div>
         </div>
-        <!-- Main Content Section End -->
+    </div>
 @endsection
 

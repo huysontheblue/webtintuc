@@ -1,14 +1,10 @@
 @extends("admin_dashboard.layouts.app")
-		
 @section("style")
 	<link href="{{ asset('admin_dashboard_assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 @endsection
-
 @section("wrapper")
-<!--start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">
-        <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">Phản hồi</div>
             <div class="ps-3">
@@ -22,8 +18,6 @@
                 </nav>
             </div>
         </div>
-        <!--end breadcrumb-->
-        
         <div class="card">
             <div class="card-body">
             <div class="card">
@@ -66,20 +60,10 @@
 				</div>
             </div>
         </div>
-
-
     </div>
 </div>
-<!--end page wrapper -->
 @endsection
 
 @section("script")
-	<script>
-		$(document).ready(function () {
-            setTimeout(()=>{
-                    $(".general-message").fadeOut();
-            },5000);
-		});
-	</script>
-
+	<script src="{{ asset('admin_dashboard_assets/js/user.js') }}"></script>
 @endsection

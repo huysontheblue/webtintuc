@@ -1,10 +1,7 @@
 @extends('main_layouts.master')
-
 @section('title', $category->name . ' - News')
-
 @section('content')
 
-<!-- Main Breadcrumb Start -->
 <div class="main--breadcrumb">
 	<div class="container">
 			<ul class="breadcrumb">
@@ -13,7 +10,6 @@
 			</ul>
 	</div>
 </div>
-<!-- Main Breadcrumb End -->
 
 <div class="main-content--section pbottom--30">
 	<div class="container">
@@ -22,11 +18,9 @@
 					<div class="sticky-content-inner">
 						<div class="post--item post--single post--title-largest pd--30-0">
 							@if(! count($posts))
-								<p class="lead">Không có danh mục nào cả !</p>
+								<p class="lead">Không có bài viết !</p>
 							@else
-
 							@forelse($posts as $post)
-
 							<div class="block-21 d-flex animate-box post">
 								<a href="{{ route('posts.show', $post) }}" class="blog-img" style="background-image: url({{ asset($post->image ? 'storage/' . $post->image->path : 'storage/placeholders/placeholder-image.png'  )}});"></a>
 								<div class="text">
@@ -54,27 +48,18 @@
 							@endforeach
 							@endif
 							<!-- phân trang -->
-							{{$posts->links() }} 
-						</div>
+						{{$posts->links() }} 
 					</div>
 				</div>
-				<!-- SIDEBAR: start -->
-				<!-- Main Sidebar Start -->
-				<div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
-					<div class="sticky-content-inner">
-						<!-- Widget Start -->
-						<x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
-						<!-- blog.side-outstanding_posts -->
-						<!-- Widget End -->
-						<!-- Widget Start -->
-						<x-blog.binhchon />
-						<!-- Widget End -->
-						<!-- Widget Start -->
-						<x-blog.quangcao />
-						<!-- Widget End -->
-					</div>
+			</div>
+			<div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
+				<div class="sticky-content-inner">
+					<x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
+					<!-- blog.side-outstanding_posts -->
+					<x-blog.binhchon />
+					<x-blog.quangcao />
 				</div>
-			<!-- Main Sidebar End -->
+			</div>
 		</div>
 	</div>
 </div>

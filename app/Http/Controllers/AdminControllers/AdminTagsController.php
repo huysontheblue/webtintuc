@@ -13,6 +13,13 @@ class AdminTagsController extends Controller
         ]);
     }
 
+    public function edit(Tag $tag)
+    {
+        return view('admin_dashboard.tags.edit',[
+            'tags' => Tags::pluck('name', 'id'),
+            'tag' => $tag
+        ]);
+    }
     public function show(Tag $tag)
     {
         return view('admin_dashboard.tags.show',[

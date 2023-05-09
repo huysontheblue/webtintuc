@@ -46,14 +46,12 @@
             </ul>
         </div>
     </div>
-	<!-- Main Content Section Start -->
 	<div class="main-content--section pbottom--30">
 		<div class="container">
             <h3 class="page-header">Thông tin cá nhân</h3>
             <div class="row">            
                 <form action="{{ route('update') }}" method="post"  enctype="multipart/form-data" >
                     @csrf
-                    <!-- left column -->
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="text-center">
                             <img style="    border: 4px solid #979993; border-radius: 50%; margin: auto; background-size: cover ;  width: 180px; height: 180px;   background-image: url({{ auth()->user()->image ?  asset('storage/' . auth()->user()->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})"  alt="">
@@ -102,19 +100,18 @@
 
 @guest
     <div class="wrapper">
-	<!-- Main Content Section Start -->
-	<div class="main-content--section pbottom--30">
-		<div class="container">
-            <div class="row">
-                <div class="cold-md-8 offset-md-2 text-center">
-                    <h1 style="font-size: 162px; color: green; font-weight: bold;">404</h1>
-                    <h2>Trang không tồn tại</h2>
-                    <p>Chúng tôi xin lỗi, trang bạn yêu cầu có thể được tìm thấy. Vui lòng quay lại trang chủ.</p>
-                    <a href="{{ route('home') }}" class="btn btn-primary">Quay lại trang chủ</a>
+        <div class="main-content--section pbottom--30">
+            <div class="container">
+                <div class="row">
+                    <div class="cold-md-8 offset-md-2 text-center">
+                        <h1 style="font-size: 162px; color: green; font-weight: bold;">404</h1>
+                        <h2>Trang không tồn tại</h2>
+                        <p>Chúng tôi xin lỗi, trang bạn yêu cầu có thể được tìm thấy. Vui lòng quay lại trang chủ.</p>
+                        <a href="{{ route('home') }}" class="btn btn-primary">Quay lại trang chủ</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endguest
 

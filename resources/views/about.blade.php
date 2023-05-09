@@ -1,7 +1,5 @@
 @extends('main_layouts.master')
-
 @section('title','News - Giới thiệu')
-
 @section('content')
 		
 <div class="colorlib-counters colorlib-about">

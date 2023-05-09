@@ -9,7 +9,6 @@ use App\Models\Tag;
 
 class CategoryController extends Controller
 {
-    
     public function index(){
           /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
           $category_unclassified = Category::where('name','Chưa phân loại')->first();
@@ -71,7 +70,7 @@ class CategoryController extends Controller
         
         return view('categories.show', [
             'category' => $category,
-            'posts' => $category->posts()->approved()->orderBy('created_at','DESC')->paginate(10) ,
+            'posts' => $category->posts()->approved()->orderBy('created_at','DESC')->paginate(6) ,
             'recent_posts' => $recent_posts,
             'categories' => $categories, 
             'tags' => $tags,

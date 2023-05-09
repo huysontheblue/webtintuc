@@ -12,6 +12,5 @@ class TinyMCEController extends Controller
         $file = request()->file('file');
         $path = $file->store('tinymce_uploads','public');
         return response()->json(['location' => "/storage/$path"]);   
-  
     }
 }

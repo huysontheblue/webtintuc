@@ -17,7 +17,7 @@ class AdminCommentsController extends Controller
     public function index()
     {
         return view('admin_dashboard.comments.index', [
-            'comments' => Comment::latest()->paginate(20),
+            'comments' => Comment::latest()->paginate(10),
         ]);
     }
 

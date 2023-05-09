@@ -1,1 +1,1 @@
-<!-- <img style="border-radius: 50px; "class="w-160 fill-current text-gray-500" src="{{ asset('kcnew/frontend/img/logo.png') }}" alt="logo" > -->
+<img style="border-radius: 10px; height: 200px; width:200px "class="w-160 fill-current text-gray-500" src="{{ asset('kcnew/frontend/img/logoson.png') }}" alt="logo" >

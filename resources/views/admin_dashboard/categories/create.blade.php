@@ -1,12 +1,9 @@
 @extends("admin_dashboard.layouts.app")
-
 @section("wrapper")
-		<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
-				<!--breadcrumb-->
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Danh mục bài viết</div>
+	<div class="page-wrapper">
+		<div class="page-content">
+			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+				<div class="breadcrumb-title pe-3">Danh mục bài viết</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
@@ -17,8 +14,6 @@
 						</nav>
 					</div>
 				</div>
-				<!--end breadcrumb-->
-			  
 				<div class="card">
 				  <div class="card-body p-4">
 					  <h5 class="card-title">Thêm danh mục mới</h5>
@@ -38,7 +33,6 @@
 												<p class="text-danger">{{ $message }}</p>
 											@enderror
 										</div>
-
 										<div class="mb-3">
 											<label for="inputProductTitle" class="form-label">Slug - danh mục</label>
 											<input type="text" value=' {{ old("slug" ) }}' name="slug" required  class="form-control" id="inputProductTitle" placeholder="Nhập slug">
@@ -47,30 +41,17 @@
 												<p class="text-danger">{{ $message }}</p>
 											@enderror
 										</div>
-
 										<button class="btn btn-primary" type="submit">Thêm danh mục</button>
-
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</form>
-				  </div>
-			  </div>
-
-
+				</div>
 			</div>
 		</div>
-		<!--end page wrapper -->
+	</div>
 @endsection
-	
 @section("script")
-	<script>
-		$(document).ready(function () {
-			setTimeout(()=>{
-				$(".general-message").fadeOut();
-			},5000);
-		});
-	</script>
+	<script src="{{ asset('admin_dashboard_assets/js/user.js') }}"></script>
 @endsection

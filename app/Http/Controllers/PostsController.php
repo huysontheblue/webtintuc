@@ -11,13 +11,11 @@ class PostsController extends Controller
     public function show(Post $post){
 
         $recent_posts = Post::latest()->take(4)->get();
-        
         $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(4)->get();
         $tags = Tag::latest()->take(40)->get();
 
         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
         $category_unclassified = Category::where('name','Chưa phân loại')->first();
-
         $posts_new[0]= Post::latest()->approved()
             ->where('category_id','!=', $category_unclassified->id )
             ->take(1)->get();
@@ -46,7 +44,6 @@ class PostsController extends Controller
         // Tăng lượt xem khi xem bài viết
         $post->views = ($post->views) + 1;
         $post->save();
-
         return view('post', [ 
             'post' => $post,
             'recent_posts' => $recent_posts,
@@ -93,8 +90,4 @@ class PostsController extends Controller
         }
         return response()->json($data);
     }
-
-    
-
-   
 }

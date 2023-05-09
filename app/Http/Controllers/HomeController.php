@@ -80,7 +80,6 @@ class HomeController extends Controller
                 $post_category_home9 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(4)->get();
             }
 
-
         // Ý kiến người đọc, comments
         $top_commnents = Comment::take(5)->get();
 
@@ -88,16 +87,16 @@ class HomeController extends Controller
             'posts' => $posts,
             'recent_posts' => $recent_posts,
             'posts_new' => $posts_new, // Bài viết mới nhất theo mục
-            'post_category_home0' => $post_category_home0, // Bài viết danh mục 5
-            'post_category_home1' => $post_category_home1, // Bài viết danh mục 1
-            'post_category_home2' => $post_category_home2, // Bài viết danh mục 2
-            'post_category_home3' => $post_category_home3, // Bài viết danh mục 3
-            'post_category_home4' => $post_category_home4, // Bài viết danh mục 4
-            'post_category_home5' => $post_category_home5, // Bài viết danh mục 10
-            'post_category_home6' => $post_category_home6, // Bài viết danh mục 6
-            'post_category_home7' => $post_category_home7, // Bài viết danh mục 7
-            'post_category_home8' => $post_category_home8, // Bài viết danh mục 8
-            'post_category_home9' => $post_category_home9, // Bài viết danh mục 9
+            'post_category_home0' => $post_category_home0, // Bài viết danh mục
+            'post_category_home1' => $post_category_home1, 
+            'post_category_home2' => $post_category_home2, 
+            'post_category_home3' => $post_category_home3, 
+            'post_category_home4' => $post_category_home4, 
+            'post_category_home5' => $post_category_home5, 
+            'post_category_home6' => $post_category_home6, 
+            'post_category_home7' => $post_category_home7, 
+            'post_category_home8' => $post_category_home8, 
+            'post_category_home9' => $post_category_home9, 
             'outstanding_posts' => $outstanding_posts, // Bài viết nỗi bật
             'categories' => $categories, 
             'category_home' => $category_home, 
@@ -147,7 +146,7 @@ class HomeController extends Controller
     public function newPost(){
         
         // Bài viết mới nhất
-        $recent_posts = Post::latest()->take(5)->get();
+        $recent_posts = Post::latest()->take(4)->get();
         $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
        
         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
@@ -172,58 +171,11 @@ class HomeController extends Controller
             ->take(1)->get(); 
 
         // Bài viết nổi bật
-        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(4)->get();
         
         // Bài viết mới nhất
-        $newPosts_category  = Post::latest()->approved()->where('category_id', '!=',  $category_unclassified->id )->take(20)->get(); 
+        $newPosts_category  = Post::latest()->approved()->where('category_id', '!=',  $category_unclassified->id )->take(6)->get(); 
         return view('newPost',compact( 'recent_posts', 'categories', 'posts_new','outstanding_posts', 'newPosts_category'));
-    }
-
-    // Tin nóng
-    public function hotPost(){
-        
-        // Bài viết mới nhất
-        $recent_posts = Post::latest()->take(5)->get();
-        $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
-       
-        /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
-        $category_unclassified = Category::where('name','Chưa phân loại')->first();
-        $posts_new[0]= Post::latest()->approved()
-            ->where('category_id','!=', $category_unclassified->id )
-            ->take(1)->get();
-        $posts_new[1] = Post::latest()->approved()
-            ->where('category_id','!=', $category_unclassified->id )
-            ->where('category_id','!=', $posts_new[0][0]->category->id )
-            ->take(1)->get();
-        $posts_new[2] = Post::latest()->approved()
-            ->where('category_id','!=', $category_unclassified->id )
-            ->where('category_id','!=', $posts_new[0][0]->category->id )
-            ->where('category_id','!=', $posts_new[1][0]->category->id )
-            ->take(1)->get();
-        $posts_new[3] = Post::latest()->approved()
-            ->where('category_id','!=', $category_unclassified->id )
-            ->where('category_id','!=', $posts_new[0][0]->category->id )
-            ->where('category_id','!=', $posts_new[1][0]->category->id)
-            ->where('category_id','!=', $posts_new[2][0]->category->id )
-            ->take(1)->get(); 
-
-        // Bài viết nổi bật
-        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
-        
-        // Bài viết mới nhất
-        $category_phap_luat = Category::where('name','Pháp luật')->first();
-        $category_kinh_te = Category::where('name','Kinh tế')->first();
-        $category_xa_hoi = Category::where('name','Xã hội')->first();
-        $category_khoa_hoc = Category::where('name','Khoa học')->first();
-        $category_the_gioi = Category::where('name','Thế giới')->first();
-
-        $hotPosts_category[0] = Post::approved()->where('category_id', $category_phap_luat-> id )->orderBy('created_at','DESC')->take(4)->get();
-        $hotPosts_category[1] = Post::approved()->where('category_id', $category_kinh_te-> id )->orderBy('created_at','DESC')->take(4)->get();
-        $hotPosts_category[2] = Post::approved()->where('category_id', $category_xa_hoi-> id )->orderBy('created_at','DESC')->take(4)->get();
-        $hotPosts_category[3] = Post::approved()->where('category_id', $category_khoa_hoc-> id )->orderBy('created_at','DESC')->take(4)->get();
-        $hotPosts_category[4] = Post::approved()->where('category_id', $category_the_gioi-> id )->orderBy('created_at','DESC')->take(4)->get();
-
-        return view('hotPost',compact( 'recent_posts','categories','posts_new','outstanding_posts','hotPosts_category'));
     }
 
     // Xem nhiều nhất
@@ -258,8 +210,7 @@ class HomeController extends Controller
         $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
         
         // Bài viết mới nhất
-        $viewPosts_category  = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->orderBy('views','DESC')->take(20)->get(); 
-
+        $viewPosts_category  = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->orderBy('views','DESC')->take(6)->get(); 
         return view('viewPost',compact('recent_posts','categories','posts_new','outstanding_posts','viewPosts_category'));
     }
 
@@ -271,7 +222,7 @@ class HomeController extends Controller
         return view('profile');
     }
 
-    private $rules = [
+    private $rules = [ 
         'name' => 'required|min:3',
         'email' => 'required|email|unique:users,email',
         'image' => 'nullable|file|mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:300,max-height:300',
@@ -295,19 +246,16 @@ class HomeController extends Controller
             $image_user = Image::where('imageable_id',  $user->id)->first();
             if($image_user)
                 $image_user->delete();
-
             $image = $request->file('image');
             $filename = $image->getClientOriginalName();
             $file_extension = $image->getClientOriginalExtension();
-            $path   = $image->store('images', 'public');
-            
+            $path   = $image->store('images', 'public');       
             $user->image()->create([
                 'name' => $filename,
                 'extension' => $file_extension,
                 'path' => $path,
             ]);
         }
-        
         return redirect()->route('profile')->with('success', 'Sửa tài khoản thành công.');
     }
 

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
-
 use App\Models\Role;
 use App\Models\User;
 
@@ -23,7 +22,7 @@ class AdminUsersController extends Controller
     public function index()
     {
         return view('admin_dashboard.users.index', [
-            'users' => User::with('role')->paginate(12),
+            'users' => User::with('role')->paginate(10),
         ]);
     }
   
@@ -67,6 +66,8 @@ class AdminUsersController extends Controller
     {
         return view('admin_dashboard.users.show', [
             'user' => $user,
+            /* 'posts' => Post::with('category')->orderBy('created_at','DESC')->paginate(12), */
+            /* 'posts' => Post::with('category')->orderBy('id','ASC')->paginate(12), */
         ]);
     }
 

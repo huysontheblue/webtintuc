@@ -26,6 +26,9 @@ class DashboardController extends Controller
         $role_editor = Role::where('name','editor')->first();
         $countEditor = User::all()->where('role_id', $role_editor->id)->count();
 
+        $nguoi_dt = Role::where('name','createposts')->first();
+        $countDt = User::all()->where('role_id', $role_editor->id)->count();
+
         $postAll = Post::all();
 
         $countView = 0;
@@ -43,7 +46,7 @@ class DashboardController extends Controller
             'countView' => $countView,
             'countComments' => $countComments,
             'countEditor' => $countEditor,
+            'countDt' => $countDt,
         ]);
     }
-
 }

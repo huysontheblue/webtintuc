@@ -8,7 +8,6 @@
         return false;
     }
 ?>
-<!--sidebar wrapper -->
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
@@ -21,7 +20,6 @@
             <i class='bx bx-arrow-to-left'></i>
         </div>
     </div>
-    <!--navigation-->
     <ul class="metismenu" id="menu">
         @if(checkPermission("admin.index"))
             <li>
@@ -36,7 +34,7 @@
             </li>
         @endif
 
-        @if(checkPermission("admin.posts.index") || checkPermission("admin.posts.create") )
+        @if(checkPermission("admin.posts.index") || checkPermission("admin.posts.create"))
             <li>
                 <a href="javascript:;" class="has-arrow">
                     <div class="parent-icon">
@@ -54,14 +52,13 @@
                             </a>
                         </li>
                     @endif         
-
                     @if(checkPermission("admin.posts.create"))
                         <li> 
                             <a href="{{ route('admin.posts.create') }}">
                                 <i class="bx bx-right-arrow-alt"></i>Thêm bài viết mới
                             </a>
                         </li>
-                    @endif                   
+                    @endif   
                 </ul>
             </li>
         @endif
@@ -132,7 +129,7 @@
                 </ul>
             </li>
         @endif
-        <hr>
+        <!-- <hr> -->
         @if(checkPermission("admin.roles.index") || checkPermission("admin.roles.create") )
             <li>
                 <a href="javascript:;" class="has-arrow">
@@ -221,7 +218,7 @@
                 </a>
             </li>
         @endif
-        <hr>
+        <!-- <hr> -->
         <li>
             <a href="{{ route('home') }}" >
                 <div class="parent-icon">
@@ -231,6 +228,4 @@
             </a>
         </li>  
     </ul>
-    <!--end navigation-->
 </div>
-<!--end sidebar wrapper -->

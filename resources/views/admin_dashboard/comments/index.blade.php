@@ -1,10 +1,7 @@
-@extends("admin_dashboard.layouts.app")
-		
+@extends("admin_dashboard.layouts.app")	
 @section("wrapper")
-<!--start page wrapper -->
 <div class="page-wrapper">
     <div class="page-content">
-        <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="breadcrumb-title pe-3">Bình luận</div>
             <div class="ps-3">
@@ -17,8 +14,6 @@
                 </nav>
             </div>
         </div>
-        <!--end breadcrumb-->
-        
         <div class="card">
             <div class="card-body">
                 <div class="d-lg-flex align-items-center mb-4 gap-3">
@@ -55,10 +50,9 @@
                                     <a target="_blank" class="btn btn-primary btn-sm" href="{{ route('posts.show', $comment->post->slug) }}#comment_{{ $comment->id }}">Xem bình luận</a>
                                 </td>
                                 <td>{{ $comment->created_at->format('d/m/Y') }}</td>
-                   
                                 <td>
                                     <div class="d-flex order-actions">
-                                        <a href="{{ route('admin.comments.edit', $comment)}}" class=""><i class='bx bxs-edit'></i></a>
+                                        <!-- <a href="{{ route('admin.comments.edit', $comment)}}" class=""><i class='bx bxs-edit'></i></a> -->
                                         <a href="#" onclick="event.preventDefault(); document.querySelector('#delete_form_{{ $comment->id }}').submit();" class="ms-3"><i class='bx bxs-trash'></i></a>
 
                                         <form method="post" action="{{ route('admin.comments.destroy', $comment) }}" id="delete_form_{{ $comment->id }}">
@@ -69,29 +63,17 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
-                          
+                            @endforeach  
                         </tbody>
                     </table>
                 </div>
-
                 <div class="mt-4">{{ $comments->links() }}</div>
-
             </div>
         </div>
-
-
     </div>
 </div>
-<!--end page wrapper -->
 @endsection
 
 @section("script")
-	<script>
-		$(document).ready(function () {
-            setTimeout(()=>{
-                $(".general-message").fadeOut();
-            },5000);
-		});
-	</script>
+    <script src="{{ asset('admin_dashboard_assets/js/user.js') }}"></script>
 @endsection

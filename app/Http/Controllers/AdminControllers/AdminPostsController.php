@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\AdminControllers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -17,15 +15,13 @@ class AdminPostsController extends Controller
         'slug' => 'required|max:200',
         'excerpt' => 'required|max:300',
         'category_id' => 'required|numeric',
-        // 'thumbnail' => 'required|mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:300,max-height:227',
         'body' => 'required',
     ];
 
     public function index()
     {
         return view('admin_dashboard.posts.index', [
-            // 'posts' => Post::with('category')->get(),
-            'posts' => Post::with('category')->orderBy('id','ASC')->paginate(12),
+            'posts' => Post::with('category')->orderBy('created_at','DESC')->paginate(12),
         ]);
     }
 
@@ -40,6 +36,7 @@ class AdminPostsController extends Controller
     {
         $validated = $request->validate($this->rules);
         $validated['user_id'] = auth()->id();
+        $validated['approved'] = 0;
         $post = Post::create($validated);
 
         if($request->has('thumbnail'))
@@ -67,11 +64,6 @@ class AdminPostsController extends Controller
         return redirect()->route('admin.posts.create')->with('success', 'Thêm bài viết thành công.');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit(Post $post){
         $tags = '';
         foreach($post->tags as $key => $tag){
@@ -85,6 +77,7 @@ class AdminPostsController extends Controller
             'categories' => Category::pluck('name', 'id')
         ]);
     }
+
 
 
     public function update(Request $request, Post $post)
@@ -120,7 +113,7 @@ class AdminPostsController extends Controller
 
         if (count($tags_ids) > 0)
             $post->tags()->syncWithoutDetaching( $tags_ids ); 
-        return redirect()->route('admin.posts.edit', $post)->with('success', 'Sửa viết thành công.');
+        return redirect()->route('admin.posts.edit', $post)->with('success', 'Sửa bài viết thành công.');
     }
 
     public function destroy(Post $post)
@@ -130,7 +123,6 @@ class AdminPostsController extends Controller
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success','Xóa bài viết thành công.');
     }
-
 
     // Hàm tạo slug tự động
     public function to_slug(Request $request) {

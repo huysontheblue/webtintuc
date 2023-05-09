@@ -1,14 +1,10 @@
-@extends("admin_dashboard.layouts.app")
-		
+@extends("admin_dashboard.layouts.app")	
 @section("style")
-	<script src="https://cdn.tiny.cloud/1/5nk94xe9fcwk22fkp6gou9ymszwidnujnr2mu3n3xe2biap3/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/5nk94xe9fcwk22fkp6gou9ymszwidnujnr2mu3n3xe2biap3/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
-
 @section("wrapper")
-	<!--start page wrapper -->
 	<div class="page-wrapper">
 		<div class="page-content">
-			<!--breadcrumb-->
 			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 				<div class="breadcrumb-title pe-3">Giới thiệu</div>
 				<div class="ps-3">
@@ -22,8 +18,6 @@
 					</nav>
 				</div>
 			</div>
-			<!--end breadcrumb-->
-			  
 			<div class="card">
 				<div class="card-body p-4">
 					<h5 class="card-title">Sửa trang giới thiệu</h5>
@@ -37,20 +31,10 @@
 										<div class="mb-3">
 											<label for="about_first_text" class="form-label">Chúng tôi là ai ?</label>
 											<textarea name="about_first_text" class="form-control" id="about_first_text" >{{ $setting->about_first_text}}</textarea>
-										
 											@error('about_first_text')
 												<p class="text-danger">{{ $message }}</p>
 											@enderror
 										</div>
-
-										<div class="mb-3">
-											<label for="about_second_text" class="form-label">Trung tâm tin tức mới nhất </label>
-											<textarea name="about_second_text" class="form-control" id="about_second_text" >{{ $setting->about_second_text}}</textarea>
-											@error('about_second_text')
-												<p class="text-danger">{{ $message }}</p>
-											@enderror
-										</div>
-
 										<div class="row">
 											<div class="col-md-8">
 												<div class="mb-3">
@@ -94,28 +78,7 @@
 			</div>
 		</div>
 	</div>
-	<!--end page wrapper -->
 @endsection
-	
 @section("script")
-	<script>
-		$(document).ready(function () {		
-			setTimeout(()=>{
-				$(".general-message").fadeOut();
-			},5000);
-			let initTinyMCE = (id) => {
-				tinymce.init({
-					selector: '#'+id,
-					plugins: 'advlist autolink lists link charmap preview anchor pagebreak',
-					toolbar_mode: 'floating',
-					height: '300',
-					toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | rtl ltr',
-					toolbar_mode: 'floating',
-				});
-			};
-			initTinyMCE('about_our_mission');
-			initTinyMCE('about_our_vision');
-			initTinyMCE('about_services');
-		});
-	</script>
+	<script src="{{ asset('admin_dashboard_assets/js/about.js') }}"></script>
 @endsection

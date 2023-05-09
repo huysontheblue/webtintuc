@@ -1,7 +1,5 @@
 @extends('main_layouts.master')
-
-@section('title',' TDQ - Danh mục tin tức')
-
+@section('title',' News - Danh mục tin tức')
 @section('content')
 
 <div class="colorlib-blog">
@@ -12,7 +10,6 @@
                     @if(! count($category_all))
                         <p class="lead">Không có danh mục tin tức nào.</p>
                     @else
-
                     @forelse($category_all as $category)
                         <div class="col-md-3">
                             <div class="block-21 d-flex animate-box post">

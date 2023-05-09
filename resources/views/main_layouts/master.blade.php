@@ -93,9 +93,8 @@
 </head>
 <body class="boxed" data-bg-img="{{ asset('kcnew/frontend/img/bg_website.png') }}">
 	<header class="header--section header--style-3">
-		<!-- Header Topbar Start -->
 		<!-- Top header -->
-		<div class="header--topbar  bg--color-1">
+		<div class="header--topbar bg--color-1">
 			<div class="container">
 				<div class="float--left float--xs-none text-xs-center">
 					<!-- Header Topbar Info Start -->
@@ -109,13 +108,9 @@
 							<i class="fa fm fa-map-marker"></i>
 							Nghệ An
 						</li>
-						<li>
-							<i class="fa fm fa-mixcloud"></i>28
-							<sup>0</sup> C
-						</li>
 						<li style="text-transform: capitalize">
 							<i class="fa fm fa-calendar"></i>
-							Hôm nay ( {{ $now->translatedFormat('l') }},  {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}} )
+							{{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}}
 						</li>
 					</ul>
 				</div>	
@@ -129,7 +124,6 @@
 								</a>
 							</li>
 							@endguest
-
 							@auth
 							<li class="has-dropdown">
 								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -168,9 +162,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- Header Topbar End -->
-	
-		<!-- Header Navbar Start -->
 		<!-- Header danh mục -->
 		<div class="header--navbar navbar bd--color-1 bg--color-0" data-trigger="sticky">
 			<div class="container">
@@ -182,8 +173,6 @@
 						<span class="icon-bar"></span>
 					</button>
 				</div>
-	
-				<!-- Header Menu Links Start -->
 				<div id="headerNav" class="navbar-collapse collapse float--left">
 					<ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
 						<li>
@@ -214,9 +203,7 @@
 							</a>
 						</li>
 					</ul>
-				</div>
-				<!-- Header Menu Links End -->
-	
+				</div>	
 				<!-- Header Search Form Start -->
 				<form method="POST" action="{{ route('search') }}" class="header--search-form float--right" data-form="validate">
 					@csrf	
@@ -225,13 +212,9 @@
 						<i class="header--search-icon fa fa-search"></i>
 					</button>
 				</form>
-				<!-- Header Search Form End -->
 			</div>
 		</div>
-		<!-- Header Navbar End -->
 	</header>
-
-	<!-- Header Section End -->
 	<!-- Header mới nhất, tin nóng, xem nhiều nhất, tin mới cập nhật -->
 	<div id="page" class="wrapper">
 		<div class="posts--filter-bar style--3 hidden-xs">
@@ -243,12 +226,6 @@
 							<span>Tin tức mới nhất</span>
 						</a>
 					</li>			
-					<li>
-						<a href="{{ route('hotPost') }}">
-							<i class="fa fa-fire"></i>
-							<span>Tin nóng</span>
-						</a>
-					</li>
 					<li>
 						<a href="{{ route('viewPost') }}">
 							<i class="fa fa-eye"></i>
@@ -358,51 +335,35 @@
 	<script src="{{ asset('blog_template/js/jquery.countTo.js') }}"></script>
 	<!-- Main -->
 	<script src="{{ asset('blog_template/js/main.js') }}"></script>
-
 	<script src="{{ asset('js/function.js') }}"></script>
-
 	<!-- ==== JS TEAMPLATED KCNEWS jQuery Library ==== -->
 	<!-- <script src="{{ asset('kcnew/frontend/js/jquery-3.2.1.min.js') }}"></script> -->
-
 	<!-- ==== Bootstrap Framework ==== -->
 	<!-- <script src="{{ asset('kcnew/frontend/js/bootstrap.min.js') }}"></script> -->
-
 	<!-- ==== StickyJS Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.sticky.min.js') }}"></script>
-
 	<!-- ==== HoverIntent Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.hoverIntent.min.js') }}"></script>
-
 	<!-- ==== Marquee Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.marquee.min.js') }}"></script>
-
 	<!-- ==== Validation Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.validate.min.js') }}"></script>
-
 	<!-- ==== Isotope Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/isotope.min.js') }}"></script>
-
 	<!-- ==== Resize Sensor Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/resizesensor.min.js') }}"></script>
-
 	<!-- ==== Sticky Sidebar Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/theia-sticky-sidebar.min.js') }}"></script>
-
 	<!-- ==== Zoom Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.zoom.min.js') }}"></script>
-
 	<!-- ==== Bar Rating Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.barrating.min.js') }}"></script>
-
 	<!-- ==== Countdown Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/jquery.countdown.min.js') }}"></script>
-
 	<!-- ==== RetinaJS Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/retina.min.js') }}"></script>
-
 	<!-- ==== Main JavaScript ==== -->
 	<script src="{{ asset('kcnew/frontend/js/main.js') }}"></script>
-
 	@yield('custom_js')
 </body>
 </html>

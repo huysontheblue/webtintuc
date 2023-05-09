@@ -4,12 +4,10 @@
 	<link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
 @endsection
 @section("wrapper")
-		<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
-				<!--breadcrumb-->
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Tài khoản</div>
+	<div class="page-wrapper">
+		<div class="page-content">
+			<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+				<div class="breadcrumb-title pe-3">Tài khoản</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
@@ -23,8 +21,6 @@
 						</nav>
 					</div>
 				</div>
-				<!--end breadcrumb-->
-			  
 				<div class="card">
 				  <div class="card-body p-4">
 					  <h5 class="card-title">Sửa tài khoản: {{ $user->name }}</h5>
@@ -120,29 +116,9 @@
 			</div>
 		</div>
 	</div>
-	<!--end page wrapper -->
 @endsection
 	
 @section("script")
 	<script src="{{ asset('admin_dashboard_assets/plugins/select2/js/select2.min.js') }}"></script>
-	<script>
-		$(document).ready(function () {
-			// $('#image-uploadify').imageuploadify();
-
-			$('.single-select').select2({
-			theme: 'bootstrap4',
-			width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-			placeholder: $(this).data('placeholder'),
-			allowClear: Boolean($(this).data('allow-clear')),
-			});
-
-		setTimeout(()=>{
-				$(".general-message").fadeOut();
-		},5000);
-
-		});
-
-
-	</script>
-
+	<script src="{{ asset('admin_dashboard_assets/js/user.js') }}"></script>
 @endsection

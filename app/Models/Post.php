@@ -15,7 +15,7 @@ class Post extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['title','slug', 'excerpt', 'body', 'user_id','category_id', 'approved'];
+    protected $fillable = ['title','slug', 'excerpt', 'body', 'user_id','category_id', 'approved','created_at'];
     
     public function author() {
         //Bộ lọc bổ sung belongsTo
