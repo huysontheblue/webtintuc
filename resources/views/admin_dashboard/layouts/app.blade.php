@@ -38,25 +38,12 @@
         <div class="general-message alert alert-danger">{{ Session::get('error') }}</div>
     @endif
 
-	<!--wrapper-->
-	<div class="wrapper">
-		<!--start header -->
+	<div class="wrapper">	
 		@include("admin_dashboard.layouts.header")
-		<!--end header -->
-		<!--navigation-->
 		@include("admin_dashboard.layouts.nav")
-		<!--end navigation-->
-		<!--start page wrapper -->
 		@yield("wrapper")
-		<!--end page wrapper -->
-		<!--start overlay-->
 		<div class="overlay toggle-icon"></div>
-		<!--end overlay-->
-		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-		<!--End Back To Top Button-->
-		<!-- <footer class="page-footer">
-			<p class="mb-0">Copyright © 2021. Tất cả các quyền.</p>
-		</footer> -->
+		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>	
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->

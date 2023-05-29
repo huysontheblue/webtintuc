@@ -23,11 +23,11 @@
                             <i class="bx bx-search"></i>
                         </span>
                     </div>
-                    <!-- <div class="ms-auto">
+                    <div class="ms-auto">
                         <a href="{{ route('admin.categories.create') }}" class="btn btn-primary radius-30 mt-2 mt-lg-0">
                             <i class="bx bxs-plus-square"></i>Thêm danh mục mới
                         </a>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0">

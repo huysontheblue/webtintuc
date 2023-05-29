@@ -9,10 +9,6 @@ use App\Models\Post;
 
 class TagController extends Controller
 {
-    public function index(){
-        // view all categories in web
-    }
-
     public function show(Tag $tag){
         $recent_posts = Post::latest()->take(5)->get();
         $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();

@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Comment;
 use App\Models\User;
 use App\Models\Image;
-
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
@@ -18,13 +15,12 @@ class HomeController extends Controller
     public function index(){
         // Lấy ra bài đăng mới nhất trong bảng Post
         $posts = Post::latest()
-        ->approved()
-        // where('approved',1)
+        ->approved()      
         ->withCount('comments')->paginate(8); 
+
         // phân trang 8 bài
         $recent_posts = Post::latest()->take(5)->get();
         $categories = Category::where('name','!=','Chưa phân loại')->orderBy('created_at','DESC')->take(10)->get();
-        // $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
 
         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
@@ -48,8 +44,9 @@ class HomeController extends Controller
             ->where('category_id','!=', $posts_new[2][0]->category->id )
             ->take(1)->get();
         // Take() lấy giới hạn
-        // Lấy ra tin nổi bật -- Lấy theo views
-        $outstanding_posts = Post::orderBy('views','DESC')->take(5)->get();
+        // Lấy ra tin xem nhiều nhất -- Lấy theo views
+        $outstanding_posts = Post::orderBy('views','DESC')->take(7
+        )->get();
 
         // Lấy ra tất cả danh mục tin tức 
         // DESC sắp xếp thứ tự giảm dần
@@ -69,7 +66,7 @@ class HomeController extends Controller
             if($stt_home === 5)
                 $post_category_home4 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(6)->get();
             if($stt_home === 6)
-                $post_category_home5 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+                $post_category_home5 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(6)->get();
             if($stt_home === 7)
                 $post_category_home6 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
             if($stt_home === 8)
@@ -79,10 +76,8 @@ class HomeController extends Controller
             if($stt_home === 10)
                 $post_category_home9 = Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(4)->get();
             }
-
         // Ý kiến người đọc, comments
         $top_commnents = Comment::take(5)->get();
-
         return view('home', [ 
             'posts' => $posts,
             'recent_posts' => $recent_posts,
@@ -134,15 +129,15 @@ class HomeController extends Controller
 
         // Bài viết nổi bật
         $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+
         $key = $request->search;
-        $posts = Post::latest()->withCount('comments')->approved()->where('title','like' , '%'.$key.'%')->paginate(30);
+        $posts = Post::latest()->withCount('comments')->approved()->where('title','like' , '%'.$key.'%')->paginate(20);
         $title = 'Kết quả tìm kiếm';
         $title_t = 'Kết quả tìm kiếm theo';
-        $time = '(0,36 giây) ';
-        return view('search',compact('posts','title','time','recent_posts','categories', 'key','posts_new', 'outstanding_posts'));
+        /* $time = '(0,3 giây) '; */
+        return view('search',compact('posts','title','recent_posts','categories', 'key','posts_new', 'outstanding_posts'));
     }
-
-    //Tin tức mới nhất
+    
     public function newPost(){
         
         // Bài viết mới nhất
@@ -178,7 +173,6 @@ class HomeController extends Controller
         return view('newPost',compact( 'recent_posts', 'categories', 'posts_new','outstanding_posts', 'newPosts_category'));
     }
 
-    // Xem nhiều nhất
     public function viewPost(){
         
         // Bài viết mới nhất
@@ -228,8 +222,7 @@ class HomeController extends Controller
         'image' => 'nullable|file|mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:300,max-height:300',
     ];
 
-    public function update(Request $request)
-    {
+    public function update(Request $request){
         $user = auth()->user();
         
         if($request->email !== $user->email){

@@ -2,7 +2,7 @@
 	use Carbon\Carbon;
 	use App\Models\Category;
 	$now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
-	$categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(12)->get();
+	$categoryFooter = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(13)->get();
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -15,8 +15,6 @@
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
 	<meta name="_token" content="{{ csrf_token()}}" />
-
-  <!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
 	<meta property="og:url" content=""/>
@@ -26,78 +24,51 @@
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
-
 	<link rel="icon" type="image/png" href="{{ asset('kcnew/frontend/img/news.jpg') }}"  sizes="160x160">
-
-	<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">	
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/icomoon.css') }}">
 	<!-- Bootstrap  -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/bootstrap.css') }}">
-
 	<!-- Magnific Popup -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/magnific-popup.css') }}">
-
 	<!-- Flexslider  -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/flexslider.css') }}">
-
 	<!-- Owl Carousel -->
 	<!-- <link rel="stylesheet" href="{{ asset('blog_template/css/owl.carousel.min.') }}"> -->
-	<link rel="stylesheet" href="{{ asset('blog_template/css/owl.theme.default.min.css') }}">
-	
+	<link rel="stylesheet" href="{{ asset('blog_template/css/owl.theme.default.min.css') }}">	
 	<!-- Flaticons  -->
 	<link rel="stylesheet" href="{{ asset('blog_template/fonts/flaticon/font/flaticon.css') }}">
-
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="{{ asset('blog_template/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/mystyle.css') }}">
-
 	<!-- Modernizr JS -->
 	<script src="{{ asset('blog_template/js/modernizr-2.6.2.min.js') }}"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-	<!-- =====  CSS - Teamplate KCNEWS =========== -->
-
     <!-- ==== Google Font ==== -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700">
-
     <!-- ==== Font Awesome ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/font-awesome.min.css') }}">
-
     <!-- ==== Bootstrap Framework ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/bootstrap.min.css') }}">
-
     <!-- ==== Bar Rating Plugin ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/fontawesome-stars-o.min.css') }}">
-
     <!-- ==== Main Stylesheet ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/style.css') }}">
-
     <!-- ==== Responsive Stylesheet ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/responsive-style.css') }}">
-
     <!-- ==== Theme Color Stylesheet ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/colors/theme-color-9.css') }}" id="changeColorScheme">
-
     <!-- ==== Custom Stylesheet ==== -->
     <link rel="stylesheet" href="{{ asset('kcnew/frontend/css/custom.css') }}">
-
     @yield('custom_css')
-
 </head>
 <body class="boxed" data-bg-img="{{ asset('kcnew/frontend/img/bg_website.png') }}">
 	<header class="header--section header--style-3">
-		<!-- Top header -->
 		<div class="header--topbar bg--color-1">
 			<div class="container">
 				<div class="float--left float--xs-none text-xs-center">
-					<!-- Header Topbar Info Start -->
 					<ul class="header--topbar-info nav">
 						<li>
 							<a href="{{ route('home') }}">
@@ -105,12 +76,10 @@
 							</a>
 						</li>
 						<li>
-							<i class="fa fm fa-map-marker"></i>
-							Nghệ An
+							<i class="fa fm fa-map-marker"></i>Nghệ An
 						</li>
 						<li style="text-transform: capitalize">
-							<i class="fa fm fa-calendar"></i>
-							{{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}}
+							<i class="fa fm fa-calendar"></i>{{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}}
 						</li>
 					</ul>
 				</div>	
@@ -134,7 +103,7 @@
 								<ul class="dropdown-menu">
 									@if(auth()->user()->role->name !== 'user')
 									<li>
-										<a href="{{ route('admin.index') }}">Admin - Dashbroad</a>
+										<a href="{{ route('admin.index') }}">Admin - Quản Trị</a>
 									</li>
 									@endif
 									<li>
@@ -185,7 +154,6 @@
 								<a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>
 							</li>
 						@endforeach
-
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang
 								<i class="fa flm fa-angle-down"></i>
@@ -225,7 +193,7 @@
 							<i class="fa fa-star-o"></i>
 							<span>Tin tức mới nhất</span>
 						</a>
-					</li>			
+					</li>		
 					<li>
 						<a href="{{ route('viewPost') }}">
 							<i class="fa fa-eye"></i>
@@ -235,7 +203,6 @@
 				</ul>
 			</div>
 		</div>
-
 		<div class="news--ticker">
 			<div class="container">
 				<div class="title">

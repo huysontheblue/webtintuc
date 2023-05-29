@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-md-12 ptop--30 pbottom--30">
                                     <div class="post--items-title" data-ajax="tab">
-                                        <h2 class="h4">{{ $posts->count() }} {{ $title }} {{ $time }}: <span style="color: black; background-color: #f7f201;" class="h4">{{$key}}</span></h2>                                       
+                                        <h2 class="h4">{{ $posts->count() }} {{ $title }} : <span style="color: black; background-color: #f7f201;" class="h4">{{$key}}</span></h2>                                       
                                     </div>
                                     <div class="post--items post--items-2" data-ajax-content="outer">
                                         <ul class="nav" data-ajax-content="inner">

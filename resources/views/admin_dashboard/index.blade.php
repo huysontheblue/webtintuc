@@ -2,7 +2,6 @@
 @section("style")
     <link href="{{ asset('admin_dashboard_assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet"/>
 @endsection
-
 @section("wrapper")
     <div class="page-wrapper">
         <div class="page-content">
@@ -14,7 +13,6 @@
                                 <div>
                                     <p class="mb-0 text-secondary">Tổng bài viết</p>
                                     <h4 class="my-1 text-info">{{ $countPost }}</h4>
-                                    <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class='bx bx-message-square-edit'></i>
                                 </div>
@@ -64,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!--end row-->
+            </div>
 
             <div class="row">
                 <div class="col-12 col-lg-8">
@@ -84,8 +82,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            
+                </div>    
                 <div class="col-12 col-lg-4 d-flex">
                     <div class="card w-100 radius-10">
                         <div class="card-body">
@@ -112,29 +109,23 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
+                            </div>    
                             <div class="card radius-10 mb-0 border shadow-none">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
-                                        <div>
-                                            <p class="mb-0 text-secondary">Lượt thích</p>
-                                            <h5 class="my-1"></h5> Chờ cập nhật ... 
-                                        </div>
-                                        <div class="widgets-icons-2 bg-gradient-moonlit text-white ms-auto"><i class='bx bxs-like'></i>
-                                        </div>
+                                    <div>
+                                        <p class="mb-0 text-secondary">Tổng người Editor</p>
+                                        <h4 class="my-1 text-warning">{{ $countEditor }}</h4>
+                                    </div>
+                                    <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto">
+                                        <i class='bx bxs-group'></i>
                                     </div>
                                 </div>
                             </div>
-                            
-                            
                         </div>
-
                     </div>
-
                 </div>
-            </div><!--end row-->
-
+            </div>
         </div>
     </div>
 @endsection
@@ -149,7 +140,7 @@
 
 	<script>
 		$(document).ready(function () {
-			// Biểu đồ
+		// Biểu đồ
         var ctx = document.getElementById("chart1").getContext('2d'); 
         var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
             gradientStroke1.addColorStop(0, '#6078ea');  
@@ -160,10 +151,10 @@
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                labels: ['01/2023', '02/2023', '03/2023', '04/2023', '05/2023', '06/2023', '07/2023'],
+                labels: ['03/2023', '04/2023', '05/2023'],
                 datasets: [{
-                    label: 'Lượt xem',
-                    data: [ 10, 13, 9,16, 10, 12,15],
+                    label: 'Bài đăng',
+                    data: [ 30, 25, 21],
                     borderColor: gradientStroke1,
                     backgroundColor: gradientStroke1,
                     hoverBackgroundColor: gradientStroke1,
@@ -172,7 +163,7 @@
                     borderWidth: 0
                 }, {
                     label: 'Bình luận',
-                    data: [ 8, 14, 19, 12, 7, 18, 8],
+                    data: [ 22, 20, 19, 12, 7, 18, 8],
                     borderColor: gradientStroke2,
                     backgroundColor: gradientStroke2,
                     hoverBackgroundColor: gradientStroke2,

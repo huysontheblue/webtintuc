@@ -142,6 +142,7 @@
 												<p class="text-danger">{{ $message }}</p>
 											@enderror
 										</div>
+																		
 										<div class="mb-3">
 											<div class="form-check form-switch">
 												<input name="approved" {{  $post->approved ? 'checked' : '' }} class="form-check-input" type="checkbox" id="flexSwitchChecked">
@@ -150,6 +151,7 @@
 												</label>
 											</div>
 										</div>
+										
 										<button class="btn btn-primary" type="submit">Sửa bài viết</button>
 										<a 
 											class="btn btn-danger" 

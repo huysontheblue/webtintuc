@@ -33,10 +33,8 @@
     <div class="main-content--section pbottom--30">
         <div class="container">
             <div class="row">
-                <!-- Main -->
                 <div class="main--content col-md-8" data-sticky-content="true">
                     <div class="sticky-content-inner">
-                        <!-- Post Item -->
                         <div class="post--item post--single post--title-largest pd--30-0">
                             <div class="post--cats">
                                 <ul class="nav">
@@ -69,14 +67,14 @@
 							<p class="author-info">Người viết: {{ $post->author->name }}</p>
 							<p class="post-time">Thời gian: {{ $post->created_at->locale('vi')->diffForHumans() }}</p>
                         </div>
-                        <div class="post--tags">
+                        <!-- <div class="post--tags">
                             <ul class="nav">
                                 <li><span><i class="fa fa-tags"></i> Từ khóa </span></li>
 								@for($i = 0; $i <  count($post->tags) ; $i++)
                                     <li><a class="text capitalize" href="{{ route('tags.show',  $post->tags[$i]) }}">{{ $post->tags[$i]->name }}</a></li>
 								@endfor
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="post--social">
                             <span class="title"><i class="fa fa-globe"></i> Tương tác </span>
                             <div class="social--widget style--4">
@@ -93,24 +91,21 @@
                                 <ul class="nav">
                                     <li><a href="javascript:"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="javascript:"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="javascript:"><i class="fa fa-instagram"></i>></a></li>
-                                    <!-- <li><a href="javascript:"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="javascript:"><i class="fa fa-rss"></i></a></li>
-                                    <li><a href="javascript:"><i class="fa fa-youtube-play"></i></a></li> -->
+                                    <li><a href="javascript:"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="comment--list pd--30-0">
-                            <!-- Post Items Title -->
                             <div class="post--items-title">
-                                <h2 class="h4"><span class="post_count_comment h4" >{{ count($post->comments) }} </span> bình luận</h2>
+                                <h2 class="h4">
+                                    <span class="post_count_comment h4" >{{ count($post->comments) }}</span> 
+                                    bình luận
+                                </h2>
                                 <i class="icon fa fa-comments-o"></i>
                             </div>
-
                             <ul class="comment--items nav">
 							@foreach($post->comments as $comment)
                                 <li>
-                                    <!-- Comment -->
                                    <div class="comment--item clearfix">
 										<div class="comment--img float--left">
                                             <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url({{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})"  alt="">
@@ -118,7 +113,7 @@
 										<div class="comment--info">
 											<div class="comment--header clearfix">
 												<p class="name">{{ $comment->user->name }}</p>
-												<p class="date">{{ $comment->created_at->locale('vi')->diffForHumans() }}</p>
+												<p class="date">{{ $comment->created_at->locale('vi')->diffForHumans()}}</p>
 												<a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
 											</div>
 											<div class="comment--content">
@@ -134,7 +129,6 @@
                             </ul>
                         </div>
                         <div class="comment--form pd--30-0">
-                            <!-- Post Items Title Start -->
                             <div class="post--items-title">
 								<h2 class="h4">Viết bình luận</h2>
                                 <i class="icon fa fa-pencil-square-o"></i>
@@ -142,7 +136,8 @@
                             <div class="comment-respond">
 								<x-blog.message :status="'success'"/>
 								@auth	
-                                <form onsubmit="return false;" autocomplete="off" method="POST" >
+                                <form method="POST" action="{{ route('posts.add_comment', $post )}}">
+                                <!-- <form onsubmit="return false;" autocomplete="off" method="POST" > -->
 									@csrf
 									<div class="row form-group">
 										<div class="col-md-12">
@@ -157,13 +152,13 @@
 								@endauth
 								@guest
 								<p class="h4">
-									<a href="{{ route('login') }}">Đăng nhập</a> để bình luận bài viết
+                                    <a href="{{ route('login') }}">Đăng nhập</a> hoặc 
+									<a href="{{ route('register') }}">Đăng ký</a> để bình luận bài viết
 								</p>
 								@endguest
                             </div>
                         </div>
 						<div class="post--related ptop--30">
-                            <!-- Post Items Title Start -->
                             <div class="post--items-title" data-ajax="tab">
                                 <h2 class="h4">Có thể bạn cũng thích</h2>
                             </div>
@@ -171,7 +166,6 @@
                                 <ul class="nav row" data-ajax-content="inner">
                                     @foreach($postTheSame as $postTheSame)
                                         <li class="col-sm-12 pbottom--30">
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $postTheSame) }}"class="thumb">

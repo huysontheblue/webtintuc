@@ -96,7 +96,7 @@
 				<div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
 					<div class="sticky-content-inner">
 						<div class="row">
-							<!-- Home 0 sức khỏe -->
+							<!-- Thế giới -->
 							<div class="col-md-6 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[0]->name }}</h2>
@@ -154,20 +154,18 @@
 									</ul>
 								</div>
 							</div>
-							<!-- Home 1 giáo dục -->
+							<!-- Xã hội -->
 							<div class="col-md-6 ptop--30 pbottom--30">
-								<!-- Post Items Title Start -->
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[1]->name }}</h2>
 								</div>
-								<!-- Post Items Title End -->
 								<div class="post--items post--items-3" data-ajax-content="outer">
 									<ul class="nav" data-ajax-content="inner">								
 										<li>
 											<div class="post--item post--layout-1">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home1[0]) }}" class="thumb">
-														<img src="{{ asset($post_category_home1[0]->image ? 'storage/' . $post_category_home1[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"  alt="">
+														<img src="{{ asset($post_category_home1[0]->image ? 'storage/' . $post_category_home1[0]->image->path : 'storage/placeholders/placeholder-image.png')}}" style="height: 202px">
 													</a>				
 													<a href="javascript:;" class="icon">
 														<i class="fa fa-flash"></i>
@@ -185,11 +183,9 @@
 													</div>
 												</div>
 											</div>
-											<!-- Post Item End -->
 										</li>
 										@for ($i = 1; $i <= 5; $i++)
 										<li>
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home1[$i]) }}" class="thumb">
@@ -213,7 +209,7 @@
 									</ul>
 								</div>
 							</div>
-							<!-- Home 2 thể thao -->
+							<!-- Kinh tế -->
 							<div class="col-md-12 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[2]->name }}</h2>
@@ -277,7 +273,7 @@
 														<div class="post--item post--layout-2">
 															<div class="post--img">
 																<a href="{{ route('posts.show', $post_category_home2[$i]) }}" class="thumb">
-																	<img src="{{ asset($post_category_home2[$i]->image ? 'storage/' . $post_category_home2[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"alt="">
+																	<img src="{{ asset($post_category_home2[$i]->image ? 'storage/' . $post_category_home2[$i]->image->path : 'storage/placeholders/placeholder-image.png')}}" style="height: 95px;">
 																</a>
 																<div class="post--info">
 																	<ul class="nav meta">																		
@@ -299,19 +295,14 @@
 									</ul>
 								</div>
 							</div>
-							<!-- Home 3 giải trí-->
+							<!-- Sức khỏe-->
 							<div class="col-md-6 ptop--30 pbottom--30">
-								<!-- Post Items Title Start -->
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[3]->name }}</h2>
 								</div>
-								<!-- Post Items Title End -->
-
-								<!-- Post Items Start -->
 								<div class="post--items post--items-2" data-ajax-content="outer">
 									<ul class="nav row gutter--15" data-ajax-content="inner">
 										<li class="col-xs-12">
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-1">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home3[0]) }}" class="thumb">
@@ -325,7 +316,6 @@
 															<li><a href="javascript:;">{{ $post_category_home3[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home3[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home3[0]) }}"class="btn-link">{{ $post_category_home3[0]->title }}</a>
@@ -334,31 +324,24 @@
 													</div>
 												</div>
 											</div>
-											<!-- Post Item End -->
 										</li>
-
 										@for ($i = 1; $i <= 4; $i++)
-										@if($i==1 || $i == 3 )
-											<li class="col-xs-12">
-												<!-- Divider Start -->
-												<hr class="divider">
-												<!-- Divider End -->
-											</li>
+											@if($i==1 || $i == 3 )
+												<li class="col-xs-12">
+													<hr class="divider">
+												</li>
 											@endif
 											<li class="col-xs-6">
-												<!-- Post Item Start -->
 												<div class="post--item post--layout-2">
 													<div class="post--img">
 														<a href="{{ route('posts.show', $post_category_home3[$i]) }}"class="thumb">
 															<img src="{{ asset($post_category_home3[$i]->image ? 'storage/' . $post_category_home3[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt="">
 														</a>
-
 														<div class="post--info">
 															<ul class="nav meta">
 																<li><a href="javascript:;">{{ $post_category_home3[$i]->author->name }}</a></li>
 																<li><a href="javascript:;">{{ $post_category_home3[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
-
 															<div class="title">
 																<h3 class="h4">
 																	<a href="{{ route('posts.show', $post_category_home3[$i]) }}" class="btn-link">{{ $post_category_home3[$i]->title }}</a>
@@ -367,14 +350,12 @@
 														</div>
 													</div>
 												</div>
-												<!-- Post Item End -->
 											</li>
 										@endfor
 									</ul>
 								</div>
-								<!-- Post Items End -->
 							</div>
-							<!-- Home 4  Pháp luật-->
+							<!-- Giáo dục-->
 							<div class="col-md-6 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[4]->name }}</h2>
@@ -382,11 +363,10 @@
 								<div class="post--items post--items-3" data-ajax-content="outer">
 									<ul class="nav" data-ajax-content="inner">
 										<li>
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-1">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home4[0]) }}"class="thumb">
-														<img src="{{ asset($post_category_home4[0]->image ? 'storage/' . $post_category_home4[0]->image->path : 'storage/placeholders/placeholder-image.png')}}" alt="">
+														<img src="{{ asset($post_category_home4[0]->image ? 'storage/' . $post_category_home4[0]->image->path : 'storage/placeholders/placeholder-image.png')}}" style="height: 240px;">
 													</a>
 													<a href="{{ route('categories.show', $post_category_home4[0]->category) }}" class="cat">{{ $post_category_home4[0]->category->name }}</a>
 													<a href="{{ route('categories.show', $post_category_home4[0]->category) }}" class="icon"><i class="fa fa-eye"></i></a>
@@ -405,25 +385,20 @@
 													</div>
 												</div>
 											</div>
-											<!-- Post Item End -->
 										</li>
-
 										@for ($i = 1; $i <= 5; $i++)
 										<li>
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home4[$i]) }}"
 														class="thumb">
 														<img src="{{ asset($post_category_home4[$i]->image ? 'storage/' . $post_category_home4[$i]->image->path : 'storage/placeholders/placeholder-image.png')}}"alt="">
 													</a>
-
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="javascript:;">{{ $post_category_home4[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home4[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home4[$i]) }}" class="btn-link">{{ $post_category_home4[$i]->title }}</a>
@@ -436,7 +411,7 @@
 										@endfor
 									</ul>
 								</div>
-							</div>
+							</div>												
 						</div>
 					</div>
 				</div>
@@ -445,7 +420,7 @@
 					<div class="sticky-content-inner">
 						<div class="widget">
 							<div class="widget--title">
-								<h2 class="h4">Tin tức nổi bật</h2>
+								<h2 class="h4">Tin tức xem nhiều nhất</h2>
 								<i class="icon fa fa-newspaper-o"></i>
 							</div>
 							<div class="list--widget list--widget-1">
@@ -480,7 +455,7 @@
 							</div>
 						</div>
 						<!-- Bắt đầu Từ khóa -->
-						<div class="widget">
+						<div class="widget" style="margin-top: 36px;">
 							<div class="widget--title  " data-ajax="tab">
 								<h2 class="h4">Từ khóa</h2>
 							</div>
@@ -508,7 +483,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Home 5 công nghệ -->
+			<!-- Thể thao -->
 			<div class="main--content pd--30-0">
 				<div class="post--items-title" data-ajax="tab">
 					<h2 class="h4">{{ $category_home[5]->name }}</h2>
@@ -562,44 +537,38 @@
 										</div>
 									</div>
 								</li>
-								@endfor		
+							@endfor		
 							</ul>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<!-- Home 6-9 -->
+			<!-- Home -->
 			<div class="row">
-				<!-- Home 6-9 khoa h-->
+				<!-- Home -->
 				<div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
 					<div class="sticky-content-inner">
 						<div class="row">
-							<!-- home 6 khoa học-->
+							<!-- Giải trí-->
 							<div class="col-md-6 ptop--30 pbottom--30">
-								<!-- Post Items Title Start -->
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[6]->name }}</h2>
 								</div>
-								<!-- Post Items Title End -->
-								<!-- Post Items Start -->
 								<div class="post--items post--items-3" data-ajax-content="outer">
 									<ul class="nav" data-ajax-content="inner">
 										<li>
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-1">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home6[0]) }}"class="thumb">
-														<img src="{{ asset($post_category_home6[0]->image ? 'storage/' . $post_category_home6[0]->image->path : 'storage/placeholders/placeholder-image.png') }}" alt="">
+														<img src="{{ asset($post_category_home6[0]->image ? 'storage/' . $post_category_home6[0]->image->path : 'storage/placeholders/placeholder-image.png') }}">
 													</a>
 													<a href="{{ route('categories.show', $post_category_home6[0]->category) }}"class="cat">{{ $post_category_home6[0]->category->name }}</a>
 													<a href="{{ route('categories.show', $post_category_home6[0]->category) }}" class="icon"><i class="fa fa-star-o"></i></a>
-
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="javascript:;">{{ $post_category_home6[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home6[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home6[0]) }}" class="btn-link">{{ $post_category_home6[0]->title }}</a>
@@ -608,17 +577,13 @@
 													</div>
 												</div>
 											</div>
-											<!-- Post Item End -->
 										</li>
-
 										@for ($i = 1; $i <= 4; $i++)
 										<li>
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
-													<a href="{{ route('posts.show', $post_category_home6[$i]) }}"
-														class="thumb">
-														<img src="{{ asset($post_category_home6[0]->image ? 'storage/' . $post_category_home6[$i]->image->path : 'storage/placeholders/placeholder-image.png') }}"alt="">
+													<a href="{{ route('posts.show', $post_category_home6[$i]) }}"class="thumb">
+														<img src="{{ asset($post_category_home6[0]->image ? 'storage/' . $post_category_home6[$i]->image->path : 'storage/placeholders/placeholder-image.png') }}">
 													</a>
 
 													<div class="post--info">
@@ -626,7 +591,6 @@
 															<li><a href="javascript:;">{{ $post_category_home6[$i]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home6[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home6[$i]) }}" class="btn-link">{{ $post_category_home6[$i]->title }}</a>
@@ -635,14 +599,12 @@
 													</div>
 												</div>
 											</div>
-											<!-- Post Item End -->
 										</li>
 										@endfor									
 									</ul>
 								</div>
-								<!-- Post Items End -->
 							</div>
-							<!-- Home7 xe cộ -->
+							<!-- Pháp luật -->
 							<div class="col-md-6 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[7]->name }}</h2>
@@ -655,15 +617,13 @@
 													<a href="{{ route('posts.show', $post_category_home7[0]) }}"class="thumb">
 														<img src="{{ asset($post_category_home7[0]->image ? 'storage/' . $post_category_home7[0]->image->path : 'storage/placeholders/placeholder-image.png')}}"style="height: 217px;">
 													</a>
-													<a href="{{ route('categories.show', $post_category_home7[0]->category) }}" class="cat">{{ $post_category_home7[0]->category->name }}</a>
+													<a href="{{ route('categories.show', $post_category_home7[0]->category) }}" class="cat" >{{ $post_category_home7[0]->category->name }}</a>
 													<a href="{{ route('categories.show', $post_category_home7[0]->category) }}" class="icon"><i class="fa fa-heart-o"></i></a>
-
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="javascript:;">{{ $post_category_home7[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home7[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home7[0]) }}" class="btn-link">{{ $post_category_home7[0]->title }}</a>
@@ -680,11 +640,10 @@
 											</li>
 											@endif
 										<li class="col-xs-6">
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-2">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home7[$i]) }}" class="thumb">
-														<img src="{{ asset($post_category_home7[$i]->image ? 'storage/' . $post_category_home7[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"alt="">
+														<img src="{{ asset($post_category_home7[$i]->image ? 'storage/' . $post_category_home7[$i]->image->path : 'storage/placeholders/placeholder-image.png')}}"style="height: 80px;">
 													</a>
 													<div class="post--info">
 														<ul class="nav meta">
@@ -704,7 +663,7 @@
 									</ul>
 								</div>
 							</div>
-	                        <!-- Home 8 kinh doanh  -->
+	                        <!-- Công nghệ  -->
 							<div class="col-md-12 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[8]->name }}</h2>
@@ -712,7 +671,6 @@
 								<div class="post--items post--items-2" data-ajax-content="outer">
 									<ul class="nav row" data-ajax-content="inner">
 										<li class="col-md-6">
-											<!-- Post Item Start -->
 											<div class="post--item post--layout-2">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $post_category_home8[0]) }}" class="thumb">
@@ -726,7 +684,6 @@
 															<li><a href="javascript:;">{{ $post_category_home8[0]->author->name }}</a></li>
 															<li><a href="javascript:;">{{ $post_category_home8[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
-
 														<div class="title">
 															<h3 class="h4">
 																<a href="{{ route('posts.show', $post_category_home8[0]) }}" class="btn-link">{{ $post_category_home8[0]->title }}</a>
@@ -768,7 +725,6 @@
 														</li>
 													@endif
 													<li class="col-xs-6">
-														<!-- Post Item Start -->
 														<div class="post--item post--layout-2">
 															<div class="post--img">
 																<a href="{{ route('posts.show', $post_category_home8[$i]) }}"
@@ -797,7 +753,7 @@
 								</div>
 								<!-- Post Items End -->
 							</div>
-							<!-- Home 9 xã hội-->
+							<!-- Khoa học -->
 							<div class="col-md-12 ptop--30 pbottom--30">
 								<div class="post--items-title" data-ajax="tab">
 									<h2 class="h4">{{ $category_home[9]->name }}</h2>
@@ -907,5 +863,3 @@
 	</div>
 </div>	
 @endsection
-
-	

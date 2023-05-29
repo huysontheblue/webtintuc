@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\AdminControllers;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Category;
+
 class AdminCategoriesController extends Controller
 {
 

@@ -1,5 +1,5 @@
 <!-- Mạng xã hội -->
-<div class="widget">
+<div class="widget" style="margin-top: 57px;">
 	<div class="widget--title">
 		<h2 class="h4">Kết nối với chúng tôi</h2>
 			<i class="icon fa fa-share-alt"></i>
@@ -12,7 +12,6 @@
 							<i class="fa fa-facebook"></i>
 							<span>Facebook</span>
 						</span>
-
 						<span class="text">
 							<span>Facebook</span>
 							<span>3.12 k</span>
@@ -26,14 +25,12 @@
 							<i class="fa fa-twitter"></i>
 							<span>Tweet</span>
 					    </span>
-
 						<span class="text">
 							<span>Twitter</span>
 							<span>869</span>
 						</span>
 					</a>
 				</li>
-
 				<li class="col-md-12 google-plus">
 					<a href="#">
 						<span class="icon">

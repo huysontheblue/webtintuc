@@ -6,7 +6,6 @@
     foreach ($newComment as $comment) {
         $posts_comments[] = Post::where('id', $comment->post_id)->get();
     }
-
 ?>
 
 <header>
@@ -51,7 +50,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="http://127.0.0.1:8000/admin/users/218/edit">
+                        <a class="dropdown-item" href="http://127.0.0.1:8000/admin/users/1/edit">
                             <i class="bx bx-user"></i>
                             <span>Hồ sơ</span>
                         </a>

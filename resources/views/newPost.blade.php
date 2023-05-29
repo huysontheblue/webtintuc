@@ -25,7 +25,7 @@
                                                         <div class="col-md-6">
                                                             <div class="post--img">
                                                                 <a href="{{ route('posts.show', $newPosts_category[$i] ) }}" class="thumb">
-                                                                    <img src="{{ asset($newPosts_category[$i]->image ? 'storage/' . $newPosts_category[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"alt="">
+                                                                    <img src="{{ asset($newPosts_category[$i]->image ? 'storage/' . $newPosts_category[$i]->image->path : 'storage/placeholders/placeholder-image.png')}}"alt="">
                                                                 </a>
                                                                 <a href="{{ route('categories.show', $newPosts_category[$i]->category) }}"class="cat">{{ $newPosts_category[$i]->category->name }}</a>
                                                             </div>
@@ -80,4 +80,3 @@
         </div>
     </div>
 @endsection
-

@@ -49,7 +49,7 @@
 												name="name" required  
 												class="form-control" 
 												id="inputProductTitle" 
-												placeholder="Nhập tiêu đề bài viết"
+												placeholder="Nhập tên quyền"
 											>										
 											@error('name')
 												<p class="text-danger">{{ $message }}</p>
@@ -62,7 +62,6 @@
 													$the_count = count($permissions);
 													$start = 0;
 												@endphp
-											
 												@for($j = 1 ; $j <= 3; $j++) 
 													@php 
 														$end = round($the_count * ($j / 3) );
@@ -92,7 +91,6 @@
 		</div>
 	</div>
 @endsection
-	
 @section("script")
 	<script src="{{ asset('admin_dashboard_assets/js/user.js') }}"></script>
 @endsection

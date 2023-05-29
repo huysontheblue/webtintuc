@@ -1,13 +1,7 @@
 <?php 
 use App\Models\Post;
-use App\Models\Category;
-    // Bài viết nổi bật
-    $category_hot = Category::where('name','!=','Chưa phân loại')->first();
-    $outstanding_posts_hots = Post::approved()
-        ->where('category_id',  $category_hot->id )
-        ->orderBy('created_at','DESC')
-        ->take(5)->get();
-    $outstanding_posts_views =  Post::approved()->orderBy('views','DESC')->take(5)->get();
+    $outstanding_posts_hots = Post::latest()->take(6)->get();
+    $outstanding_posts_views =  Post::approved()->orderBy('views','DESC')->take(6)->get();
 ?>
 
 @props(['outstanding_posts'] )
@@ -20,50 +14,45 @@ use App\Models\Category;
     <div class="list--widget list--widget-1">
         <div class="list--widget-nav" data-ajax="tab">
             <ul class="nav nav-justified">
-                <li>
+                <li class="active">
                     <a class="outstandPosts" href="#" data-ajax-action="load_widget_hot_news">Tin mới nhất</a>
                 </li>
-                <li class="active">
-                    <a class="outstandPosts" href="" data-ajax-action="load_widget_trendy_news">Xu hướng</a>
-                </li>
                 <li>
-                    <a class="outstandPosts" href="" data-ajax-action="load_widget_most_watched">Xem nhiều nhất</a>
+                    <a class="outstandPosts" href="#" data-ajax-action="load_widget_most_watched">Xem nhiều nhất</a>
                 </li>
             </ul>
         </div>
         <div class="post--items post--items-3" data-ajax-content="outer">
             <ul class="nav listPost" data-ajax-content="inner">
-                @foreach($outstanding_posts as $outstanding_post)
-                    <li>
-                        <div class="post--item post--layout-3">
-                            <div class="post--img">
-                                <a href="{{ route('posts.show', $outstanding_post) }}" class="thumb">
-                                    <img src="{{ asset($outstanding_post->image ? 'storage/' .$outstanding_post->image->path : 'storage/placeholders/placeholder-image.png')}}"alt="">
-                                </a>
-                                <div class="post--info">
-                                    <ul class="nav meta">
-                                        <li><a href="javascript:;">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
-                                        <li><a href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></li>
-                                        <li><span><i class="fa fm fa-eye"></i>{{ $outstanding_post->views }}</span></li>
-                                    </ul>
-
-                                    <div class="title">
-                                        <h3 class="h4">
-                                            <a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title}}</a>
-                                        </h3>
-                                    </div>
+            @foreach($outstanding_posts_hots as $outstanding_posts_hot)
+                <li>
+                    <div class="post--item post--layout-3">
+                        <div class="post--img">
+                            <a href="{{ route('posts.show', $outstanding_posts_hot) }}" class="thumb">
+                                <img src="{{ asset($outstanding_posts_hot->image ? 'storage/' .$outstanding_posts_hot->image->path : 'storage/placeholders/placeholder-image.png')}}">
+                            </a>
+                            <div class="post--info">
+                                <ul class="nav meta">
+                                    <li><a href="javascript:;">{{ $outstanding_posts_hot->created_at->locale('vi')->diffForHumans() }}</a></li>
+                                    <li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_posts_hot->comments) }}</a></li>
+                                    <li><span><i class="fa fm fa-eye"></i>{{ $outstanding_posts_hot->views }}</span></li>
+                                </ul>
+                                <div class="title">
+                                    <h3 class="h4">
+                                        <a href="{{ route('posts.show', $outstanding_posts_hot) }}" class="btn-link">{{ $outstanding_posts_hot->title}}</a>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
-                    </li>
-                @endforeach
+                    </div>
+                </li>
+            @endforeach
             </ul>
         </div>
     </div>
 </div>
 
 @section('custom_js')
-
 <script>
 	setTimeout(() => {
 		$(".global-message").fadeOut();
@@ -92,7 +81,6 @@ use App\Models\Category;
                                                 <li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_posts_hot->comments) }}</a></li>
                                                 <li><span><i class="fa fm fa-eye"></i>{{ $outstanding_posts_hot->views }}</span></li>
                                             </ul>
-
                                             <div class="title">
                                                 <h3 class="h4">
                                                     <a href="{{ route('posts.show', $outstanding_posts_hot) }}" class="btn-link">{{ $outstanding_posts_hot->title}}</a>
@@ -110,39 +98,6 @@ use App\Models\Category;
             if(index==1){
                 const htmls  = (() =>{
                     return `
-                        @foreach($outstanding_posts as $outstanding_post)
-                            <li>
-                                <!-- Post Item Start -->
-                                <div class="post--item post--layout-3">
-                                    <div class="post--img">
-                                        <a href="{{ route('posts.show', $outstanding_post) }}" class="thumb">
-                                            <img src="{{ asset($outstanding_post->image ? 'storage/' .$outstanding_post->image->path : 'storage/placeholders/placeholder-image.png')}}"alt="">
-                                        </a>
-                                        <div class="post--info">
-                                            <ul class="nav meta">
-                                                <li><a href="javascript:;">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
-                                                <li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></li>
-                                                <li><span><i class="fa fm fa-eye"></i>{{ $outstanding_post->views }}</span></li>
-                                            </ul>
-
-                                            <div class="title">
-                                                <h3 class="h4">
-                                                    <a href="{{ route('posts.show', $outstanding_post) }}"class="btn-link">{{ $outstanding_post->title}}</a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Post Item End -->
-                            </li>
-                        @endforeach
-                        `
-                    });
-                ListPost.append(htmls);
-            }
-            if(index==2){
-                const htmls  = (() =>{
-                    return `
                          @foreach($outstanding_posts_views as $outstanding_posts_view)
                             <li>
                                 <div class="post--item post--layout-3">
@@ -153,10 +108,9 @@ use App\Models\Category;
                                         <div class="post--info">
                                             <ul class="nav meta">
                                                 <li><a href="javascript:;">{{ $outstanding_posts_view->created_at->locale('vi')->diffForHumans() }}</a></li>
-                                                <li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_posts_view->comments) }}</a></li>
+                                                <li><a href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_posts_view->comments) }}</a></li>
                                                 <li><span><i class="fa fm fa-eye"></i>{{ $outstanding_posts_view->views }}</span></li>
                                             </ul>
-
                                             <div class="title">
                                                 <h3 class="h4">
                                                     <a href="{{ route('posts.show', $outstanding_posts_view) }}"class="btn-link">{{ $outstanding_posts_view->title}}</a>
@@ -174,24 +128,19 @@ use App\Models\Category;
         });
     });
 </script>
-
 <script>
 	$(document).on('click', '.send-comment-btn', (e) => {
 		e.preventDefault();
 		let $this = e.target;
-
 		let csrf_token = $($this).parents("form").find("input[name='_token']").val();
 		let the_comment =  $($this).parents("form").find("textarea[name='the_comment']").val();
 		let post_title =  $('.post_title').text() ; 
-
 		let count_comment =  $('.post_count_comment').text() ; 
         let ListComment = $('.comment--items');
-
 		let formData = new FormData();
 		formData.append('_token', csrf_token);
 		formData.append('the_comment', the_comment);
 		formData.append('post_title', post_title);
-
 		$.ajax({
 			url: "{{ route('posts.addCommentUser') }}",
 			data: formData,
@@ -249,5 +198,4 @@ use App\Models\Category;
 		})
 	})
 </script>
-
 @endsection

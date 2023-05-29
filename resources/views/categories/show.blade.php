@@ -10,7 +10,6 @@
 			</ul>
 	</div>
 </div>
-
 <div class="main-content--section pbottom--30">
 	<div class="container">
 		<div class="row">
@@ -48,14 +47,13 @@
 							@endforeach
 							@endif
 							<!-- phân trang -->
-						{{$posts->links() }} 
+						{{$posts->links()}} 
 					</div>
 				</div>
 			</div>
 			<div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
 				<div class="sticky-content-inner">
 					<x-blog.tintuc :outstanding_posts="$outstanding_posts"/>
-					<!-- blog.side-outstanding_posts -->
 					<x-blog.binhchon />
 					<x-blog.quangcao />
 				</div>

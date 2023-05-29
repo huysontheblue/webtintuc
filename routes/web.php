@@ -21,9 +21,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\NewsletterController;
 
-
 // Điều hướng cho User
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/tai-khoan', [HomeController::class, 'profile'])->name('profile');
 Route::post('/tai-khoan', [HomeController::class, 'update'])->name('update');
@@ -40,7 +38,6 @@ Route::get('/bai-viet/{post:slug}', [PostsController::class, 'show'])->name('pos
 
 Route::post('/bai-viet/{post:slug}', [PostsController::class, 'addComment'])->name('posts.add_comment');
 Route::post('/binh-luan', [PostsController::class, 'addCommentUser'])->name('posts.addCommentUser');
-
 
 Route::get('/gioi-thieu', AboutController::class)->name('about');
 
